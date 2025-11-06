@@ -1,0 +1,159 @@
+import Home from './sections/Home';
+import Portfolio from './sections/Portfolio';
+
+function App() {
+  return (
+    <>
+      <Home />
+      <Portfolio />
+    </>
+  );
+}
+export default App;
+
+// ---- PROJECT DATA ----
+const projectData = {
+  tomodime: {
+    title: "Tomodime",
+    desc: "UI design for anime lovers with event discovery, fan forums, cosplay store.",
+    img: "assets/tomodime.png",
+    tech: ["Figma", "Illustrator"],
+    link: "https://www.figma.com/…"
+  },
+  skintastic: {
+    title: "Skintastic",
+    desc: "All-in-one sustainable skincare app with refill tracking and eco-friendly features.",
+    img: "assets/skintastic.png",
+    tech: ["Figma", "Adobe XD"],
+    link: "https://www.figma.com/…"
+  },
+  // Add all other projects in same structure...
+};
+
+// ---- OPEN / CLOSE MODAL ----
+function openProjectModal(key) {
+  const data = projectData[key];
+  document.getElementById("modal-img").src = data.img;
+  document.getElementById("modal-title").textContent = data.title;
+  document.getElementById("modal-desc").textContent = data.desc;
+
+  const techDiv = document.getElementById("modal-tech");
+  techDiv.innerHTML = "";
+  data.tech.forEach(t => {
+    const span = document.createElement("span");
+    span.textContent = t;
+    techDiv.appendChild(span);
+  });
+
+  document.getElementById("modal-link").href = data.link;
+  document.getElementById("project-modal").style.display = "flex";
+}
+
+function closeProjectModal() {
+  document.getElementById("project-modal").style.display = "none";
+}
+
+// Optional: close modal if clicking outside the content
+document.getElementById("project-modal").addEventListener("click", e => {
+  if (e.target.id === "project-modal") closeProjectModal();
+});
+
+// ---- FILTERING FUNCTION ----
+document.querySelectorAll(".project-filters button").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelector(".project-filters .active").classList.remove("active");
+    btn.classList.add("active");
+
+    const filter = btn.getAttribute("data-filter");
+    document.querySelectorAll(".project-card").forEach(card => {
+      if (filter === "all" || card.getAttribute("data-category") === filter) {
+        card.style.display = "block";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  });
+});
+
+// Project data (replace with your real ones)
+const projects = {
+  tomodime: {
+    title: "Tomodime",
+    desc: "UI design for anime lovers with event discovery, fan forums, and cosplay store.",
+    img: "assets/tomodime.png",
+    tech: ["Figma", "Illustrator"],
+    link: "https://www.figma.com/file/xxxxx"
+  },
+  skintastic: {
+    title: "Skintastic",
+    desc: "All-in-one sustainable skincare app with refill tracking and eco-friendly features.",
+    img: "assets/skintastic.png",
+    tech: ["Figma", "Adobe XD"],
+    link: "https://www.figma.com/file/yyyyy"
+  }
+};
+
+// Function to open modal
+function openProjectModal(key) {
+  const data = projects[key];
+  document.getElementById("modal-img").src = data.img;
+  document.getElementById("modal-title").textContent = data.title;
+  document.getElementById("modal-desc").textContent = data.desc;
+  document.getElementById("modal-link").href = data.link;
+
+  const techContainer = document.getElementById("modal-tech");
+  techContainer.innerHTML = "";
+  data.tech.forEach(t => {
+    const span = document.createElement("span");
+    span.textContent = t;
+    techContainer.appendChild(span);
+  });
+
+  document.getElementById("project-modal").classList.add("show");
+}
+
+// Function to close modal
+document.getElementById("close-modal").addEventListener("click", () => {
+  document.getElementById("project-modal").classList.remove("show");
+});
+
+// Optional: Close when clicking outside modal
+document.getElementById("project-modal").addEventListener("click", e => {
+  if (e.target.id === "project-modal") {
+    document.getElementById("project-modal").classList.remove("show");
+  }
+});
+
+// Animate skill bars on scroll
+const skillFills = document.querySelectorAll(".fill");
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const width = entry.target.getAttribute("data-width");
+      entry.target.style.width = width;
+    }
+  });
+});
+skillFills.forEach(fill => observer.observe(fill));
+
+// Smooth scroll
+document.querySelectorAll('a[href^="#"]').forEach(link => {
+  link.addEventListener("click", e => {
+    e.preventDefault();
+    document.querySelector(link.getAttribute("href")).scrollIntoView({
+      behavior: "smooth"
+    });
+  });
+});
+
+// Reveal animation
+const revealSections = document.querySelectorAll(".section");
+const revealObs = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("visible");
+    }
+  });
+}, { threshold: 0.1 });
+
+revealSections.forEach(sec => revealObs.observe(sec));
