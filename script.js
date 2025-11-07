@@ -524,6 +524,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initSkillCardInteractions();
   initMobileMenu();
   initHeaderScroll();
+  initCertificateButtons();
 });
 
 // Project Modal Functions
@@ -574,33 +575,165 @@ window.addEventListener('load', () => {
   document.body.classList.add('loaded');
 });
 
-// Mobile menu functionality
+// Glass Morphism Mobile menu functionality
 function initMobileMenu() {
   const mobileToggle = document.querySelector('.mobile-menu-toggle');
   const navLinks = document.querySelector('.nav-links');
   
-  if (mobileToggle && navLinks) {
-    mobileToggle.addEventListener('click', () => {
-      mobileToggle.classList.toggle('active');
-      navLinks.classList.toggle('active');
-    });
-    
-    // Close menu when clicking on a link
-    const links = navLinks.querySelectorAll('.nav-link');
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        mobileToggle.classList.remove('active');
-        navLinks.classList.remove('active');
+  if (!mobileToggle || !navLinks) return;
+  
+  // Toggle menu with glass morphism animations
+  function toggleMenu(open) {
+    if (open) {
+      mobileToggle.classList.add('active');
+      navLinks.classList.add('active');
+      document.body.classList.add('menu-open');
+      
+      // Add stagger animation to nav links
+      const links = navLinks.querySelectorAll('.nav-link');
+      links.forEach((link, index) => {
+        link.style.animationDelay = `${index * 0.05}s`;
       });
-    });
+    } else {
+      mobileToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+      document.body.classList.remove('menu-open');
+    }
+  }
+  
+  // Simple hamburger click
+  mobileToggle.addEventListener('click', (e) => {
+    e.preventDefault();
+    e.stopPropagation();
     
-    // Close menu when clicking outside
-    document.addEventListener('click', (e) => {
-      if (!mobileToggle.contains(e.target) && !navLinks.contains(e.target)) {
-        mobileToggle.classList.remove('active');
-        navLinks.classList.remove('active');
+    const isOpen = navLinks.classList.contains('active');
+    
+    // Add click effect
+    mobileToggle.style.transform = 'scale(0.95)';
+    setTimeout(() => {
+      mobileToggle.style.transform = '';
+    }, 150);
+    
+    toggleMenu(!isOpen);
+  });
+  
+  // Enhanced link interactions
+  const links = navLinks.querySelectorAll('.nav-link');
+  links.forEach((link, index) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      const targetId = link.getAttribute('href');
+      const targetSection = document.querySelector(targetId);
+      
+      // Add click animation
+      link.style.transform = 'scale(0.95)';
+      setTimeout(() => {
+        link.style.transform = '';
+      }, 150);
+      
+      // Close menu with delay
+      setTimeout(() => {
+        toggleMenu(false);
+      }, 200);
+      
+      // Navigate to section
+      if (targetSection) {
+        setTimeout(() => {
+          const offsetTop = targetSection.offsetTop - 100;
+          window.scrollTo({
+            top: offsetTop,
+            behavior: 'smooth'
+          });
+        }, 400);
       }
     });
+  });
+  
+  // Close menu when clicking overlay (area below header)
+  document.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('active')) {
+      // Check if click is on the overlay area (below header)
+      if (e.clientY > 80 && !navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+        toggleMenu(false);
+      }
+      // Check if click is outside the menu area
+      else if (!mobileToggle.contains(e.target) && !navLinks.contains(e.target)) {
+        toggleMenu(false);
+      }
+    }
+  });
+  
+  // Close menu when clicking on the X button (pseudo-element)
+  navLinks.addEventListener('click', (e) => {
+    if (navLinks.classList.contains('active')) {
+      const rect = navLinks.getBoundingClientRect();
+      const closeArea = {
+        left: rect.right - 60,
+        right: rect.right,
+        top: rect.top + 25,
+        bottom: rect.top + 65
+      };
+      
+      if (e.clientX >= closeArea.left && e.clientX <= closeArea.right &&
+          e.clientY >= closeArea.top && e.clientY <= closeArea.bottom) {
+        toggleMenu(false);
+      }
+    }
+  });
+  
+  // Enhanced keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navLinks.classList.contains('active')) {
+      toggleMenu(false);
+      mobileToggle.focus();
+    }
+    
+    // Arrow key navigation in menu
+    if (navLinks.classList.contains('active') && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) {
+      e.preventDefault();
+      const currentFocus = document.activeElement;
+      const focusableLinks = Array.from(links);
+      const currentIndex = focusableLinks.indexOf(currentFocus);
+      
+      let nextIndex;
+      if (e.key === 'ArrowDown') {
+        nextIndex = (currentIndex + 1) % focusableLinks.length;
+      } else {
+        nextIndex = currentIndex - 1 < 0 ? focusableLinks.length - 1 : currentIndex - 1;
+      }
+      
+      focusableLinks[nextIndex].focus();
+    }
+  });
+  
+  // Add touch gestures for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+  
+  document.addEventListener('touchstart', (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+  });
+  
+  document.addEventListener('touchend', (e) => {
+    touchEndX = e.changedTouches[0].screenX;
+    handleSwipe();
+  });
+  
+  function handleSwipe() {
+    const swipeThreshold = 50;
+    const diff = touchStartX - touchEndX;
+    
+    // Swipe right to open menu
+    if (diff < -swipeThreshold && touchStartX < 50) {
+      if (!navLinks.classList.contains('active')) {
+        toggleMenu(true);
+      }
+    }
+    
+    // Swipe left to close menu
+    if (diff > swipeThreshold && navLinks.classList.contains('active')) {
+      toggleMenu(false);
+    }
   }
 }
 
@@ -629,168 +762,17 @@ function initCertificateButtons() {
   const certButtons = document.querySelectorAll('.cert-button');
   
   certButtons.forEach(button => {
-    // Remove any existing event listeners
-    button.replaceWith(button.cloneNode(true));
-    const newButton = document.querySelector(`.cert-button:nth-child(${Array.from(certButtons).indexOf(button) + 1})`);
-    
-    // Add click event listener
-    newButton.addEventListener('click', function(e) {
+    button.addEventListener('click', function(e) {
       e.preventDefault();
       e.stopPropagation();
       
-      // Get the URL from onclick attribute or data attribute
       const onclickAttr = this.getAttribute('onclick');
       if (onclickAttr) {
-        // Extract URL from onclick attribute
         const urlMatch = onclickAttr.match(/window\.open\(['"]([^'"]+)['"]/);
         if (urlMatch && urlMatch[1]) {
           window.open(urlMatch[1], '_blank');
         }
       }
     });
-    
-    // Add hover effects
-    newButton.addEventListener('mouseenter', function() {
-      this.style.transform = 'translateY(-2px) scale(1.05)';
-      this.style.boxShadow = '0 8px 25px rgba(0,0,0,0.2)';
-    });
-    
-    newButton.addEventListener('mouseleave', function() {
-      this.style.transform = 'translateY(0) scale(1)';
-      this.style.boxShadow = '0 4px 15px rgba(0,0,0,0.1)';
-    });
-    
-    // Add active effect
-    newButton.addEventListener('mousedown', function() {
-      this.style.transform = 'translateY(0) scale(0.95)';
-    });
-    
-    newButton.addEventListener('mouseup', function() {
-      this.style.transform = 'translateY(-2px) scale(1.05)';
-    });
   });
 }
-
-// Enhanced certificate button initialization
-function enhanceCertificateButtons() {
-  const certButtons = document.querySelectorAll('.cert-button');
-  
-  certButtons.forEach((button, index) => {
-    // Ensure button is clickable
-    button.style.pointerEvents = 'auto';
-    button.style.cursor = 'pointer';
-    button.style.position = 'relative';
-    button.style.zIndex = '10';
-    
-    // Add visual feedback
-    button.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      
-      // Create ripple effect
-      const ripple = document.createElement('span');
-      const rect = this.getBoundingClientRect();
-      const size = Math.max(rect.width, rect.height);
-      const x = e.clientX - rect.left - size / 2;
-      const y = e.clientY - rect.top - size / 2;
-      
-      ripple.style.cssText = `
-        position: absolute;
-        width: ${size}px;
-        height: ${size}px;
-        left: ${x}px;
-        top: ${y}px;
-        background: radial-gradient(circle, rgba(255,255,255,0.5) 0%, transparent 70%);
-        border-radius: 50%;
-        transform: scale(0);
-        animation: certRipple 0.6s ease-out;
-        pointer-events: none;
-        z-index: 1000;
-      `;
-      
-      this.appendChild(ripple);
-      
-      // Remove ripple after animation
-      setTimeout(() => {
-        if (ripple.parentNode) {
-          ripple.parentNode.removeChild(ripple);
-        }
-      }, 600);
-      
-      // Execute the original click behavior
-      const onclickAttr = this.getAttribute('onclick');
-      if (onclickAttr) {
-        try {
-          // Extract and execute the URL opening
-          const urlMatch = onclickAttr.match(/window\.open\(['"]([^'"]+)['"]/);
-          if (urlMatch && urlMatch[1]) {
-            window.open(urlMatch[1], '_blank');
-          }
-        } catch (error) {
-          console.log('Certificate button click error:', error);
-        }
-      }
-    });
-  });
-}
-
-// Add certificate ripple animation
-const certStyle = document.createElement('style');
-certStyle.textContent = `
-  @keyframes certRipple {
-    to {
-      transform: scale(2);
-      opacity: 0;
-    }
-  }
-  
-  .cert-button {
-    pointer-events: auto !important;
-    cursor: pointer !important;
-    position: relative !important;
-    z-index: 10 !important;
-  }
-  
-  .cert-button:hover {
-    transform: translateY(-2px) scale(1.05) !important;
-    box-shadow: 0 8px 25px rgba(0,0,0,0.2) !important;
-  }
-  
-  .cert-button:active {
-    transform: translateY(0) scale(0.95) !important;
-  }
-`;
-document.head.appendChild(certStyle);
-
-// Initialize certificate buttons when DOM is loaded
-document.addEventListener('DOMContentLoaded', () => {
-  // Existing initialization code...
-  createParticles();
-  createGeometricShapes();
-  createMouseFollower();
-  initScrollAnimations();
-  initParallax();
-  init3DCardEffects();
-  initActiveNavHighlight();
-  initTypingEffect();
-  initSkillCardInteractions();
-  initMobileMenu();
-  initHeaderScroll();
-  
-  // Initialize certificate buttons
-  initCertificateButtons();
-  enhanceCertificateButtons();
-});
-
-// Re-initialize certificate buttons after dynamic content changes
-window.addEventListener('load', () => {
-  document.body.classList.add('loaded');
-  enhanceCertificateButtons();
-});
-
-// Also initialize on window resize to ensure buttons remain clickable
-window.addEventListener('resize', () => {
-  setTimeout(() => {
-    enhanceCertificateButtons();
-  }, 100);
-});
