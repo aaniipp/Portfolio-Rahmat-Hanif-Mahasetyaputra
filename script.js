@@ -739,7 +739,7 @@ function initMobileMenu() {
     }
   }
   
-  // Simple hamburger click
+  // Simple hamburger click - toggle menu
   mobileToggle.addEventListener('click', (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -769,10 +769,8 @@ function initMobileMenu() {
         link.style.transform = '';
       }, 150);
       
-      // Close menu with delay
-      setTimeout(() => {
-        toggleMenu(false);
-      }, 200);
+      // Close menu immediately
+      toggleMenu(false);
       
       // Navigate to section
       if (targetSection) {
@@ -782,7 +780,7 @@ function initMobileMenu() {
             top: offsetTop,
             behavior: 'smooth'
           });
-        }, 400);
+        }, 200);
       }
     });
   });
@@ -791,29 +789,11 @@ function initMobileMenu() {
   document.addEventListener('click', (e) => {
     if (navLinks.classList.contains('active')) {
       // Check if click is on the overlay area (below header)
-      if (e.clientY > 80 && !navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
+      if (e.clientY > 70 && !navLinks.contains(e.target) && !mobileToggle.contains(e.target)) {
         toggleMenu(false);
       }
       // Check if click is outside the menu area
       else if (!mobileToggle.contains(e.target) && !navLinks.contains(e.target)) {
-        toggleMenu(false);
-      }
-    }
-  });
-  
-  // Close menu when clicking on the X button (pseudo-element)
-  navLinks.addEventListener('click', (e) => {
-    if (navLinks.classList.contains('active')) {
-      const rect = navLinks.getBoundingClientRect();
-      const closeArea = {
-        left: rect.right - 60,
-        right: rect.right,
-        top: rect.top + 25,
-        bottom: rect.top + 65
-      };
-      
-      if (e.clientX >= closeArea.left && e.clientX <= closeArea.right &&
-          e.clientY >= closeArea.top && e.clientY <= closeArea.bottom) {
         toggleMenu(false);
       }
     }
