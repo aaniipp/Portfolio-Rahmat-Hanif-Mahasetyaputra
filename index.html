@@ -680,15 +680,37 @@
       </div>
     </section>
 
-    <!-- Project Modal -->
-    <div id="projectModal" class="modal fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden" onclick="closeProjectModal()">
-      <div class="modal-content bg-white/95 backdrop-blur-md rounded-3xl p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-100" onclick="event.stopPropagation()">
-        <span class="close-btn absolute top-4 right-6 text-3xl text-gray-400 cursor-pointer hover:text-gray-600 transition-colors" onclick="closeProjectModal()">&times;</span>
-        <img id="modalImage" src="" alt="" class="modal-img w-full h-64 object-cover rounded-2xl mb-6">
-        <h3 id="modalTitle" class="text-2xl font-bold font-space text-gray-900 mb-4"></h3>
-        <p id="modalDesc" class="modal-desc text-gray-600 font-inter mb-6 leading-relaxed"></p>
-        <div id="modalTechStack" class="tech-stack flex flex-wrap gap-2 mb-6"></div>
-        <a id="modalLink" href="" target="_blank" rel="noopener noreferrer" class="figma-link inline-block bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">View Project</a>
+    <!-- Enhanced Project Modal -->
+    <div id="projectModal" class="modal fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden opacity-0 transition-opacity duration-300">
+      <div class="modal-content bg-white/95 backdrop-blur-md rounded-3xl p-6 md:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 relative" onclick="event.stopPropagation()">
+        <!-- Enhanced Close Button -->
+        <button class="close-btn absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-white transition-all duration-200 shadow-lg hover:shadow-xl z-10" onclick="closeProjectModal()" aria-label="Close modal">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          </svg>
+        </button>
+        
+        <!-- Modal Image Container -->
+        <div class="modal-image-container mb-6">
+          <img id="modalImage" src="" alt="" class="modal-img w-full h-auto max-h-64 md:max-h-80 object-contain rounded-2xl bg-gray-50">
+        </div>
+        
+        <!-- Modal Content -->
+        <div class="modal-content-inner">
+          <h3 id="modalTitle" class="modal-title text-xl md:text-2xl font-bold font-space text-gray-900 mb-4 pr-8"></h3>
+          <p id="modalDesc" class="modal-desc text-gray-600 font-inter text-sm md:text-base mb-6 leading-relaxed"></p>
+          
+          <!-- Tech Stack -->
+          <div id="modalTechStack" class="tech-stack flex flex-wrap gap-2 mb-6"></div>
+          
+          <!-- Action Button -->
+          <a id="modalLink" href="" target="_blank" rel="noopener noreferrer" class="figma-link inline-flex items-center justify-center w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 text-center">
+            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+            </svg>
+            View Project on Figma
+          </a>
+        </div>
       </div>
     </div>
 

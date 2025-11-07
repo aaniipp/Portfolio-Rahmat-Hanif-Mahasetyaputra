@@ -238,11 +238,17 @@ function initActiveNavHighlight() {
   const sections = document.querySelectorAll("section[id]");
   const navLinks = document.querySelectorAll(".nav-links a");
   
-  window.addEventListener("scroll", () => {
+  function updateActiveNav() {
+    // Don't update if modal is open
+    const modal = document.getElementById('projectModal');
+    if (modal && modal.classList.contains('show')) {
+      return;
+    }
+    
     let current = "";
     sections.forEach(section => {
       const sectionTop = section.offsetTop - 100;
-      if (scrollY >= sectionTop) {
+      if (window.scrollY >= sectionTop) {
         current = section.getAttribute("id");
       }
     });
@@ -253,6 +259,17 @@ function initActiveNavHighlight() {
         link.classList.add("active");
       }
     });
+  }
+  
+  window.addEventListener("scroll", updateActiveNav);
+  
+  // Also update when modal is closed
+  document.addEventListener('click', (e) => {
+    const modal = document.getElementById('projectModal');
+    if (modal && !modal.classList.contains('show') &&
+        (e.target.classList.contains('close-btn') || e.target === modal)) {
+      setTimeout(updateActiveNav, 100);
+    }
   });
 }
 
@@ -527,7 +544,7 @@ document.addEventListener('DOMContentLoaded', () => {
   initCertificateButtons();
 });
 
-// Project Modal Functions
+// Enhanced Project Modal Functions with Mobile Support
 function openProjectModal(title, description, techStack, link, image) {
   const modal = document.getElementById('projectModal');
   const modalTitle = document.getElementById('modalTitle');
@@ -553,20 +570,141 @@ function openProjectModal(title, description, techStack, link, image) {
   
   modal.classList.remove('hidden');
   modal.classList.add('show');
+  
+  // Store scroll position before preventing scroll
+  const scrollY = window.scrollY || document.documentElement.scrollTop;
+  document.body.style.setProperty('--scroll-position', scrollY + 'px');
+  
+  // Prevent body scroll consistently across all devices
+  document.body.style.position = 'fixed';
+  document.body.style.width = '100%';
+  document.body.style.top = `-${scrollY}px`;
   document.body.style.overflow = 'hidden';
+  
+  // Force projects nav link to stay active when modal opens
+  const navLinks = document.querySelectorAll(".nav-links a");
+  navLinks.forEach(link => {
+    link.classList.remove("active");
+    if (link.getAttribute("href") === "#projects") {
+      link.classList.add("active");
+    }
+  });
+  
+  // Add mobile-specific touch handling
+  initModalTouchHandling();
 }
 
 function closeProjectModal() {
   const modal = document.getElementById('projectModal');
+  
+  // Get stored scroll position
+  const scrollY = document.body.style.getPropertyValue('--scroll-position');
+  
   modal.classList.add('hidden');
   modal.classList.remove('show');
-  document.body.style.overflow = 'auto';
+  
+  // Restore body scroll properly for all devices
+  document.body.style.position = '';
+  document.body.style.width = '';
+  document.body.style.top = '';
+  document.body.style.overflow = '';
+  document.body.style.removeProperty('--scroll-position');
+  
+  // Restore scroll position instantly without any animation
+  if (scrollY) {
+    const scrollPosition = parseInt(scrollY || '0');
+    // Disable smooth scrolling temporarily
+    const originalScrollBehavior = document.documentElement.style.scrollBehavior;
+    document.documentElement.style.scrollBehavior = 'auto';
+    
+    // Instant scroll to original position
+    window.scrollTo(0, scrollPosition);
+    
+    // Restore original scroll behavior after a brief delay
+    setTimeout(() => {
+      document.documentElement.style.scrollBehavior = originalScrollBehavior || '';
+    }, 10);
+  }
+}
+
+// Touch handling for mobile modal
+function initModalTouchHandling() {
+  const modal = document.getElementById('projectModal');
+  const modalContent = modal.querySelector('.modal-content');
+  let startY = 0;
+  let currentY = 0;
+  let isDragging = false;
+  
+  // Touch start
+  modalContent.addEventListener('touchstart', (e) => {
+    if (e.touches.length === 1) {
+      startY = e.touches[0].clientY;
+      isDragging = true;
+      modalContent.style.transition = 'none';
+    }
+  }, { passive: true });
+  
+  // Touch move
+  modalContent.addEventListener('touchmove', (e) => {
+    if (isDragging && e.touches.length === 1) {
+      currentY = e.touches[0].clientY;
+      const deltaY = currentY - startY;
+      
+      // Only allow downward drag
+      if (deltaY > 0) {
+        e.preventDefault();
+        const opacity = Math.max(0.7, 1 - (deltaY / window.innerHeight));
+        const scale = Math.max(0.9, 1 - (deltaY / (window.innerHeight * 2)));
+        
+        modalContent.style.transform = `translateY(${deltaY}px) scale(${scale})`;
+        modal.style.backgroundColor = `rgba(0, 0, 0, ${0.6 * opacity})`;
+      }
+    }
+  }, { passive: false });
+  
+  // Touch end
+  modalContent.addEventListener('touchend', (e) => {
+    if (isDragging) {
+      isDragging = false;
+      modalContent.style.transition = 'all 0.3s ease';
+      
+      const deltaY = currentY - startY;
+      const threshold = window.innerHeight * 0.3;
+      
+      if (deltaY > threshold) {
+        // Close modal if dragged down enough
+        closeProjectModal();
+      } else {
+        // Reset position
+        modalContent.style.transform = '';
+        modal.style.backgroundColor = '';
+      }
+    }
+  }, { passive: true });
 }
 
 // Close modal on Escape key
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') {
     closeProjectModal();
+  }
+});
+
+// Close modal when clicking outside
+document.addEventListener('click', (e) => {
+  const modal = document.getElementById('projectModal');
+  if (modal.classList.contains('show') && e.target === modal) {
+    closeProjectModal();
+  }
+});
+
+// Prevent modal content from dragging on desktop
+document.addEventListener('mousedown', (e) => {
+  const modal = document.getElementById('projectModal');
+  const modalContent = modal.querySelector('.modal-content');
+  
+  if (modal.classList.contains('show') && modalContent.contains(e.target)) {
+    e.preventDefault();
   }
 });
 
