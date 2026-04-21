@@ -1,74 +1,43 @@
-# Rahmat Hanif Portfolio
+# Rahmat Hanif Portfolio Modernization
 
-## ✅ Masalah Asset GitHub Pages TERATASI
+A modernized, responsive, and elegant personal portfolio website built with clean Vanilla HTML, CSS, and JS. The latest updates introduce a premium glassmorphism aesthetic, improved component architecture, and the addition of new professional milestones.
 
-Semua file asset telah di-rename menjadi lowercase untuk kompatibilitas GitHub Pages. Berikut adalah solusi yang telah diterapkan:
+## 🌟 Key Updates & Features
 
-### 📁 File Asset yang Tersedia (Sudah Lowercase)
-- `rahmat-hanif.jpg` (profile image)
-- `tomodime.png`
-- `skintastic.png`
-- `clminton.png`
-- `stellarity.png`
-- `skinout.png`
-- `krealogi.png`
-- `biocyclexpert.png`
+- **Modern Glassmorphism Design**: Upgraded the entire site to a clean, light-themed aesthetic using glassmorphism effects, a refined indigo/violet gradient palette, and seamless scroll animations.
+- **New Professional Role**: Added experience as an **SAP Consultant** at **ABeam Consulting** (March 2026).
+- **Redesigned Sections**:
+  - **Profile & Skills**: Clean tag-chip system, color-coded by proficiency.
+  - **Certifications**: Modern card grid with top-bar accents.
+  - **Honors & Awards**: Compact 2-column grid featuring rank badges (National/International).
+  - **Education**: Improved layout to match Experience timeline format.
+  - **Projects**: Polished layouts with direct links to Figma designs.
+- **Enhanced Navigation & Mobile Experience**:
+  - Added a professional monogram avatar to the navbar and a 2px scroll progress tracking bar.
+  - **Mobile Responsive**: Completely overhauled the mobile viewing experience. The hamburger menu now slides smoothly into a full interactive sidebar overlay for seamless navigation on smaller devices.
 
-### 🔧 Solusi yang Diterapkan
-1. ✅ Semua file project images di-rename menjadi lowercase
-2. ✅ Profile image di-rename menjadi `rahmat-hanif.jpg` (spasi diganti hyphen)
-3. ✅ Semua referensi di HTML sudah diupdate ke lowercase
-4. ✅ Script `rename-assets.bat` dibuat untuk otomasi rename
+## 🚀 How to Run Locally
 
-### 📋 File yang Masih Diperlukan
-Tech icons untuk skills section (jika ingin menampilkan):
-- `figma.png`
-- `java.png`
-- `mysql.png`
-- `python.png`
-- `sap.png`
+You can easily preview this website on your local machine using Node.js without needing any complex build steps.
 
-*Jika file ini tidak ada, skills section akan tetap berfungsi tapi tanpa icon*
+1. Make sure you have [Node.js](https://nodejs.org/) installed.
+2. Open your terminal in this repository folder.
+3. Run the following command:
+   ```bash
+   npx serve . -p 3000
+   ```
+4. Open your browser and navigate to `http://localhost:3000`. The site will also be available on your local network, allowing you to test it directly on your mobile phone using your computer's local IP address.
 
-### 🚀 Cara Deploy ke GitHub Pages
-1. Upload semua file ke repository GitHub
-2. Go to Settings → Pages
-3. Source: Deploy from a branch
-4. Branch: main (atau master) / root
-5. Save dan tunggu 2-5 menit
+## 📂 Structural Overview
 
-### 📂 Struktur Folder Saat Ini
-```
-rahmat-portfolio/
-├── index.html          ✅ Updated dengan lowercase references
-├── style.css           ✅
-├── script.js           ✅
-├── README.md           ✅
-├── rename-assets.bat   ✅ Script rename otomatis
-└── assets/             ✅ Semua file sudah lowercase
-    ├── rahmat-hanif.jpg
-    ├── tomodime.png
-    ├── skintastic.png
-    ├── clminton.png
-    ├── stellarity.png
-    ├── skinout.png
-    ├── krealogi.png
-    └── biocyclexpert.png
-```
+- `index.html`: Contains all of the content, sections, and modernized structures (grids, containers).
+- `style.css`: All the styling, including the new responsive breakpoints, glassmorphism UI, scrollbar design, and mobile nav logic.
+- `script.js`: Handles scroll animations, the dynamic progress bar, interactive modals, and the mobile hamburger toggle.
+- `assets/`: Contains project previews and your profile picture. All files are lowercase for optimal deployment compatibility.
 
-## Project Portfolio
-Portfolio ini menampilkan 7 proyek:
-1. **Tomodime** - UI design untuk anime lovers
-2. **Skintastic** - Sustainable skincare app
-3. **CLminton** - Badminton store management system
-4. **Stellarity** - Astronomy enthusiasts platform
-5. **Skinout** - AI-powered skincare platform
-6. **Krealogi** - Local handicrafts platform
-7. **BioCycleXpert** - Eco-friendly farming system
+## 🛠️ Technologies Used
+- HTML5 (Semantic Structure)
+- CSS3 (Vanilla CSS, Custom Properties, CSS Grid & Flexbox, Media Queries)
+- Vanilla JavaScript (DOM manipulation, Event Listeners)
 
-## Technologies
-- HTML5
-- CSS3 dengan Tailwind CSS
-- JavaScript Vanilla
-- Responsive Design
-- Interactive Animations
+*Deploy easily to GitHub Pages, Netlify, or Vercel by hosting the root directory.*

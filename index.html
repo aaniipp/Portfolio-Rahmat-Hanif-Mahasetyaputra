@@ -1,1104 +1,948 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Rahmat Hanif Portfolio</title>
-    
-    <!-- Google Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="style.css" />
-    
-    <!-- Tailwind Config -->
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            fontFamily: {
-              'inter': ['Inter', 'sans-serif'],
-              'space': ['Space Grotesk', 'sans-serif'],
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Rahmat Hanif Portfolio</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Custom Styles -->
+  <link rel="stylesheet" href="style.css" />
+
+  <!-- Tailwind Config -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            'inter': ['Inter', 'sans-serif'],
+            'space': ['Space Grotesk', 'sans-serif'],
+          },
+          animation: {
+            'gradient': 'gradient 15s ease infinite',
+            'float': 'float 20s infinite linear',
+            'geometric': 'geometricFloat 25s infinite ease-in-out',
+            'skill-gradient': 'skillGradient 3s ease infinite',
+            'skill-shine': 'skillShine 2s infinite',
+            'modal-fade-in': 'modalFadeIn 0.3s forwards',
+            'modal-slide-in': 'modalSlideIn 0.4s 0.1s forwards',
+          },
+          keyframes: {
+            gradient: {
+              '0%': { backgroundPosition: '0% 50%' },
+              '25%': { backgroundPosition: '100% 50%' },
+              '50%': { backgroundPosition: '100% 100%' },
+              '75%': { backgroundPosition: '0% 100%' },
+              '100%': { backgroundPosition: '0% 50%' },
             },
-            animation: {
-              'gradient': 'gradient 15s ease infinite',
-              'float': 'float 20s infinite linear',
-              'geometric': 'geometricFloat 25s infinite ease-in-out',
-              'skill-gradient': 'skillGradient 3s ease infinite',
-              'skill-shine': 'skillShine 2s infinite',
-              'modal-fade-in': 'modalFadeIn 0.3s forwards',
-              'modal-slide-in': 'modalSlideIn 0.4s 0.1s forwards',
+            float: {
+              '0%': { transform: 'translateY(100vh) rotate(0deg)', opacity: '0' },
+              '10%': { opacity: '0.4' },
+              '90%': { opacity: '0.4' },
+              '100%': { transform: 'translateY(-100vh) rotate(720deg)', opacity: '0' },
             },
-            keyframes: {
-              gradient: {
-                '0%': { backgroundPosition: '0% 50%' },
-                '25%': { backgroundPosition: '100% 50%' },
-                '50%': { backgroundPosition: '100% 100%' },
-                '75%': { backgroundPosition: '0% 100%' },
-                '100%': { backgroundPosition: '0% 50%' },
-              },
-              float: {
-                '0%': { transform: 'translateY(100vh) rotate(0deg)', opacity: '0' },
-                '10%': { opacity: '0.4' },
-                '90%': { opacity: '0.4' },
-                '100%': { transform: 'translateY(-100vh) rotate(720deg)', opacity: '0' },
-              },
-              geometricFloat: {
-                '0%, 100%': { transform: 'translateY(0) rotate(0deg) scale(1)' },
-                '33%': { transform: 'translateY(-30px) rotate(120deg) scale(1.1)' },
-                '66%': { transform: 'translateY(30px) rotate(240deg) scale(0.9)' },
-              },
-              skillGradient: {
-                '0%': { backgroundPosition: '0% 50%' },
-                '50%': { backgroundPosition: '100% 50%' },
-                '100%': { backgroundPosition: '0% 50%' },
-              },
-              skillShine: {
-                '0%': { transform: 'translateX(-100%)' },
-                '100%': { transform: 'translateX(100%)' },
-              },
-              modalFadeIn: {
-                'to': { opacity: '1' },
-              },
-              modalSlideIn: {
-                'to': { transform: 'scale(1) translateY(0)' },
-              },
-            }
+            geometricFloat: {
+              '0%, 100%': { transform: 'translateY(0) rotate(0deg) scale(1)' },
+              '33%': { transform: 'translateY(-30px) rotate(120deg) scale(1.1)' },
+              '66%': { transform: 'translateY(30px) rotate(240deg) scale(0.9)' },
+            },
+            skillGradient: {
+              '0%': { backgroundPosition: '0% 50%' },
+              '50%': { backgroundPosition: '100% 50%' },
+              '100%': { backgroundPosition: '0% 50%' },
+            },
+            skillShine: {
+              '0%': { transform: 'translateX(-100%)' },
+              '100%': { transform: 'translateX(100%)' },
+            },
+            modalFadeIn: {
+              'to': { opacity: '1' },
+            },
+            modalSlideIn: {
+              'to': { transform: 'scale(1) translateY(0)' },
+            },
           }
         }
       }
-    </script>
-  </head>
+    }
+  </script>
+</head>
 
-  <body>
-    <!-- 🌐 Navbar -->
-    <header class="header">
-      <nav class="navbar">
-        <div class="logo-container">
-          <div class="logo-icon">👨‍💻</div>
-          <div class="logo-text">
-            <span class="logo-main">Rahmat Hanif</span>
-            <span class="logo-sub">Mahasetyaputra</span>
-          </div>
+<body>
+  <!-- 🌐 Navbar -->
+  <header class="header">
+    <nav class="navbar">
+      <!-- Logo -->
+      <a href="#home" class="logo-container" style="text-decoration:none">
+        <div class="nav-logo-avatar">RH</div>
+        <div class="logo-text">
+          <span class="logo-main">Rahmat Hanif</span>
+          <span class="logo-sub">Mahasetyaputra</span>
         </div>
-        
-        <ul class="nav-links">
-          <li><a href="#home" class="nav-link"><span class="nav-text">Home</span><span class="nav-dot"></span></a></li>
-          <li><a href="#education" class="nav-link"><span class="nav-text">Education</span><span class="nav-dot"></span></a></li>
-          <li><a href="#experience" class="nav-link"><span class="nav-text">Experience</span><span class="nav-dot"></span></a></li>
-          <li><a href="#portfolio" class="nav-link"><span class="nav-text">Portfolio</span><span class="nav-dot"></span></a></li>
-          <li><a href="#profile" class="nav-link"><span class="nav-text">Profile</span><span class="nav-dot"></span></a></li>
-        </ul>
-        
-        <!-- Mobile menu toggle -->
-        <div class="mobile-menu-toggle">
-          <span class="bar"></span>
-          <span class="bar"></span>
-          <span class="bar"></span>
-        </div>
-      </nav>
-    </header>
+      </a>
 
-    <!-- 🏠 Home Section -->
-    <section id="home" class="section home min-h-screen flex items-center justify-center py-16 relative overflow-hidden">
-      <!-- Animated Background Elements -->
-      <div class="absolute inset-0 overflow-hidden">
-        <div class="floating-shape shape-1 absolute w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"></div>
-        <div class="floating-shape shape-2 absolute w-80 h-80 bg-blue-500/10 rounded-full blur-3xl"></div>
-        <div class="floating-shape shape-3 absolute w-64 h-64 bg-pink-500/10 rounded-full blur-3xl"></div>
+      <!-- Nav links -->
+      <ul class="nav-links">
+        <li><a href="#home"        class="nav-link"><span class="nav-text">Home</span></a></li>
+        <li><a href="#education"   class="nav-link"><span class="nav-text">Education</span></a></li>
+        <li><a href="#experience"  class="nav-link"><span class="nav-text">Experience</span></a></li>
+        <li><a href="#portfolio"   class="nav-link"><span class="nav-text">Portfolio</span></a></li>
+        <li><a href="#profile"     class="nav-link"><span class="nav-text">Profile</span></a></li>
+      </ul>
+
+      <!-- Mobile menu toggle -->
+      <div class="mobile-menu-toggle">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
       </div>
-      
-      <div class="home-container relative z-10 max-w-7xl mx-auto px-6 flex flex-col lg:flex-row items-center justify-between gap-16">
-        <!-- Left: Intro text -->
-        <div class="home-text flex-1 text-left lg:text-left space-y-6">
-          
-          <h1 class="text-5xl lg:text-7xl font-bold font-space text-gray-900 leading-tight">
-            <span class="block animate-slide-up" style="animation-delay: 0.1s">Hello, I'm</span>
-            <span class="highlight text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 animate-slide-up block" style="animation-delay: 0.2s">
-              Rahmat Hanif
-            </span>
-            <span class="highlight text-transparent bg-clip-text bg-gradient-to-r from-purple-600 via-blue-600 to-cyan-600 animate-slide-up block" style="animation-delay: 0.3s">
-              Mahasetyaputra
-            </span>
-          </h1>
-          <div class="role-text animate-slide-up" style="animation-delay: 0.4s">
-            <span class="text-2xl lg:text-3xl font-semibold text-gray-800">SAP Certified Associate</span>
-            <div class="typing-text text-lg lg:text-xl font-inter text-gray-600 mt-2">
-              <span id="typedText"></span>
-              <span class="cursor">|</span>
-            </div>
-          </div>
-          <p class="text-lg lg:text-xl font-inter text-gray-700 leading-relaxed max-w-2xl animate-slide-up" style="animation-delay: 0.5s">
-            Passionate Business Analyst & IT Consultant with expertise in SAP integration,
-            UI/UX design, and innovative problem-solving. Currently transforming ideas into
-            reality at Phincon while pursuing my Bachelor's at BINUS University.
-          </p>
-          
-          <!-- CTA Buttons -->
-          <div class="flex flex-wrap gap-4 mt-8 animate-slide-up" style="animation-delay: 0.6s">
-            <a href="#portfolio" class="px-8 py-4 bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold rounded-xl hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 hover:scale-105">
-              View My Work
-            </a>
-            <a href="#contact" class="px-8 py-4 bg-white/90 backdrop-blur-sm text-gray-800 font-semibold rounded-xl border border-gray-200 hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 hover:scale-105">
-              Get In Touch
-            </a>
-          </div>
-          
-          <!-- Social Links -->
-          <div class="flex gap-4 mt-6 animate-slide-up" style="animation-delay: 0.7s">
-            <a href="https://linkedin.com/in/rahmathanifmahasetyaputra" target="_blank" class="social-link w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-purple-100 transition-all duration-300 hover:scale-110">
-              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" class="w-6 h-6 filter brightness-0" />
-            </a>
-            <a href="mailto:rahmathanif.work@gmail.com" class="social-link w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-blue-100 transition-all duration-300 hover:scale-110">
-              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Email" class="w-6 h-6 filter brightness-0" />
-            </a>
-            <a href="https://drive.google.com/file/d/1NXvANkYL-zMsu3sxpt9hR-_Bcvg_3wNi/view?usp=sharing" target="_blank" class="social-link w-12 h-12 bg-white/80 backdrop-blur-sm rounded-full flex items-center justify-center hover:bg-green-100 transition-all duration-300 hover:scale-110">
-              <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/readthedocs.svg" alt="Resume" class="w-6 h-6 filter brightness-0" />
-            </a>
+    </nav>
+    <!-- Scroll progress bar -->
+    <div id="navProgress" style="position:absolute;bottom:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#7c3aed,#4f46e5);transition:width 0.1s linear"></div>
+  </header>
+
+  <!-- 🏠 Home Section -->
+  <section id="home" class="section home min-h-screen flex items-center justify-center relative overflow-hidden">
+
+    <div class="home-container relative z-10 max-w-6xl mx-auto px-8 flex flex-col lg:flex-row items-center justify-between gap-12 lg:gap-20">
+
+      <!-- Left: Intro text -->
+      <div class="home-text flex-1 text-left space-y-7">
+
+        <!-- Availability chip -->
+        <div class="animate-slide-up" style="animation-delay: 0.05s">
+          <span class="home-avail-chip">
+            <span class="avail-dot"></span>
+            Available for opportunities
+          </span>
+        </div>
+
+        <!-- Name -->
+        <h1 class="text-5xl lg:text-6xl font-bold font-space text-gray-900 leading-[1.08] animate-slide-up" style="animation-delay: 0.15s">
+          Rahmat Hanif<br/>
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-indigo-500 to-blue-500">Mahasetyaputra</span>
+        </h1>
+
+        <!-- Role + typing -->
+        <div class="animate-slide-up" style="animation-delay: 0.25s">
+          <p class="text-xl font-semibold text-gray-700 tracking-wide">SAP Certified Associate</p>
+          <div class="typing-text text-base font-inter text-gray-500 mt-1">
+            <span id="typedText"></span><span class="cursor">|</span>
           </div>
         </div>
 
-        <!-- Right: Profile Image -->
-        <div class="home-image flex-shrink-0 relative animate-fade-in" style="animation-delay: 0.8s">
-          <div class="relative">
-            <!-- Glow effect -->
-            <div class="absolute inset-0 bg-gradient-to-r from-purple-400 to-blue-400 rounded-full blur-2xl opacity-30 animate-pulse"></div>
-            <!-- Profile image container -->
-            <div class="relative w-72 h-72 lg:w-96 lg:h-96 rounded-full overflow-hidden border-4 border-white/30 backdrop-blur-sm shadow-2xl">
-              <img
-                src="assets/rahmat-hanif.jpg"
-                alt="My Profile"
-                class="w-full h-full object-cover transform hover:scale-110 transition-transform duration-700"
-              />
-              <!-- Overlay gradient -->
-              <div class="absolute inset-0 bg-gradient-to-tr from-purple-500/20 via-transparent to-blue-500/20"></div>
-            </div>
-            <!-- Floating badges -->
-            <div class="absolute -top-4 -right-4 bg-yellow-400 text-gray-900 px-4 py-2 rounded-full font-bold text-sm shadow-lg animate-bounce">
-              🏆 SAP Certified
-            </div>
-            <div class="absolute -bottom-4 -left-4 bg-green-400 text-gray-900 px-4 py-2 rounded-full font-bold text-sm shadow-lg animate-bounce" style="animation-delay: 0.5s">
-              💼 BA Intern
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Scroll indicator -->
-      <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
-        <div class="w-6 h-10 border-2 border-gray-400 rounded-full flex justify-center">
-          <div class="w-1 h-3 bg-gray-400 rounded-full mt-2 animate-scroll"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 🎓 Education Section -->
-    <section id="education" class="section py-8">
-      <div class="content glass-section max-w-4xl mx-auto px-6 py-6">
-        <h2 class="text-3xl lg:text-4xl font-bold font-space text-gray-900 mb-6 text-center">Education</h2>
-
-        <div class="timeline relative">
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <h3>Binus University</h3>
-              <p class="meta">Jakarta, Indonesia | Aug 2022 – Jun 2026 (Expected)</p>
-              <ul>
-                <li>
-                  <strong>Bachelor of Information Systems</strong> | GPA: 3.63 / 4.00
-                </li>
-                <li>
-                  Coursework: ERP (SAP), UI/UX Design, Business Analysis, System
-                  Analysis, Quality Assurance
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 💼 Experience Section -->
-    <section id="experience" class="section py-8">
-      <div class="content glass-section max-w-4xl mx-auto px-6 py-6">
-        <h2 class="text-3xl lg:text-4xl font-bold font-space text-gray-900 mb-6 text-center">Experience</h2>
-
-        <div class="timeline relative">
-          <!-- PT. Phincon -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <h3>Business Analyst Intern @ PT. Phincon</h3>
-              <p class="meta">Jakarta, Indonesia | Feb 2025 – Feb 2026 (Expected)</p>
-              <ul>
-                <li>
-                  Led end-to-end System Integration Testing (SIT) and User
-                  Acceptance Testing (UAT) for 3 clients, designing test cases and
-                  executing 3,000+ scenarios.
-                </li>
-                <li>
-                  Collaborated cross-functionally with QA, developers, and PMs to
-                  analyze and resolve system defects.
-                </li>
-                <li>
-                  Compiled structured testing documentation (scripts, defect logs,
-                  closure reports) improving audits and decision-making.
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- PT. Cipta Integrasi Nusantara -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <h3>UI/UX Designer Intern @ Cipta Integrasi Nusantara</h3>
-              <p class="meta">Yogyakarta, Indonesia | Jul 2024 – Oct 2024</p>
-              <ul>
-                <li>
-                  Conducted user research, competitor analysis, and market trend
-                  studies to define user needs.
-                </li>
-                <li>
-                  Designed functional layouts and intuitive UI concepts aligned
-                  with research findings.
-                </li>
-                <li>
-                  Collaborated with cross-functional teams to implement
-                  user-centered features.
-                </li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Laboratory Assistant -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <h3>Information Systems Laboratory Assistant @ BINUS University</h3>
-              <p class="meta">Jakarta, Indonesia | Nov 2023 – Jan 2025</p>
-              <ul>
-                <li>
-                  Instructed and mentored 100+ students in UX Research & Design
-                  courses across 5 classes.
-                </li>
-                <li>Conducted grading and feedback sessions.</li>
-                <li>Participated in weekly teaching methodology training.</li>
-              </ul>
-            </div>
-          </div>
-
-          <!-- Case Study Club -->
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-content">
-              <h3>Case Study Club Member @ BINUS University</h3>
-              <p class="meta">Jakarta, Indonesia | Nov 2023 – Jan 2025</p>
-              <ul>
-                <li>
-                  Trained in problem-solving and business case strategy.
-                </li>
-                <li>
-                  Enhanced UI/UX expertise through hands-on projects and
-                  competitions.
-                </li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- 🧩 My Projects Section -->
-    <section id="portfolio" class="section py-10">
-      <div class="content glass-section max-w-6xl mx-auto px-6 py-8">
-        <h2 class="text-3xl lg:text-4xl font-bold font-space text-gray-900 mb-4 text-center">My Projects</h2>
-        <p class="text-lg font-inter text-gray-600 mb-8 text-center max-w-3xl mx-auto">
-          Explore my portfolio of projects that demonstrate my expertise in
-          UI/UX design, full-stack development, and innovative problem-solving
-          across various domains.
+        <!-- Description -->
+        <p class="text-base lg:text-lg font-inter text-gray-600 leading-relaxed max-w-xl animate-slide-up" style="animation-delay: 0.35s">
+          Business Analyst &amp; SAP Consultant passionate about bridging technology
+          and business. Currently at Abeam Consulting while completing my Bachelor's
+          at BINUS University.
         </p>
 
-        <div class="projects-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <!-- Project 1: Tomodime -->
-          <div class="enhanced-project-card group relative bg-gradient-to-br from-white/95 to-white/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-3xl hover:-translate-y-3 border border-white/30" onclick="openProjectModal('Tomodime', 'Tomodime is a UI design for anime lovers, featuring event discovery, fan forums, and an integrated cosplay store. Users can stay updated on conventions, share ideas, and shop for costumes—all in one app.', ['Figma', 'UI/UX Design'], 'https://www.figma.com/design/WNW4IORTs0BqE2Y3X2Pf9m/UX---Rahmat-Hanif-TM?node-id=0-1&t=kbvheRIkICJnd1sq-1', 'assets/tomodime.png')">
-            <!-- Project Image with Overlay -->
-            <div class="project-image-container relative h-56 overflow-hidden">
-              <img src="assets/tomodime.png" alt="Tomodime" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <!-- Project Category Badge -->
-              <div class="absolute top-4 left-4 z-10">
-                <span class="px-4 py-2 bg-purple-600/90 backdrop-blur-sm text-white text-xs font-bold rounded-full uppercase tracking-wide">UI/UX Design</span>
-              </div>
-              
-              <!-- View Project Button -->
-              <div class="absolute bottom-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                <div class="px-4 py-2 bg-white/90 backdrop-blur-sm text-gray-900 text-sm font-semibold rounded-xl flex items-center gap-2 hover:bg-white transition-colors">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                  </svg>
-                  View Details
-                </div>
-              </div>
-            </div>
-            
-            <!-- Project Content -->
-            <div class="project-content p-8 relative">
-              <!-- Decorative Element -->
-              <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-purple-400/20 to-blue-400/20 rounded-full blur-2xl"></div>
-              
-              <h3 class="text-2xl font-bold font-space text-gray-900 mb-3 relative z-10">Tomodime</h3>
-              <p class="text-gray-600 font-inter text-base mb-6 line-clamp-3 leading-relaxed relative z-10">Tomodime is a UI design for anime lovers, featuring event discovery, fan forums, and an integrated cosplay store.</p>
-              
-              <!-- Tech Stack -->
-              <div class="tech-stack flex flex-wrap gap-2 mb-6 relative z-10">
-                <span class="px-4 py-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">Figma</span>
-                <span class="px-4 py-2 bg-gradient-to-r from-blue-500 to-blue-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">UI Design</span>
-              </div>
-              
-              <!-- Project Stats -->
-              <div class="flex items-center justify-between text-sm text-gray-500 relative z-10">
-                <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
-                    <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 1 1 0 000 2H6a2 2 0 100 4h2a2 2 0 100 4h2a1 1 0 100 2 2 2 0 01-2 2H6a2 2 0 01-2-2V5z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span>UI/UX Project</span>
-                </div>
-                <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4 text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                  <span>Featured</span>
-                </div>
-              </div>
-            </div>
+        <!-- Quick stats -->
+        <div class="home-stats flex gap-8 animate-slide-up" style="animation-delay: 0.45s">
+          <div class="stat-item">
+            <span class="stat-number">7+</span>
+            <span class="stat-label">Projects</span>
           </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">8</span>
+            <span class="stat-label">Certifications</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <span class="stat-number">3.69</span>
+            <span class="stat-label">GPA</span>
+          </div>
+        </div>
 
-          <!-- Project 2: Skintastic -->
-          <div class="enhanced-project-card group relative bg-gradient-to-br from-white/95 to-white/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-3xl hover:-translate-y-3 border border-white/30" onclick="openProjectModal('Skintastic', 'Skintastic is your all-in-one app for sustainable skincare, blending eco-conscious packaging with refillable solutions. Featuring smart search, Skinciety (community hub), refill tracking, routine history, and personalized skin analysis, Skintastic elevates your skincare journey while supporting a greener planet.', ['Figma', 'UI/UX Design'], 'https://www.figma.com/design/yGCzOiSA8cWi6oySeantgC/HI--FI-Project-UI-UX-LAB?node-id=0-1&t=bPKUH1YrQ4tjLjBK-1', 'assets/skintastic.png')">
-            <div class="project-image-container relative h-56 overflow-hidden">
-              <img src="assets/skintastic.png" alt="Skintastic" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div class="absolute top-4 left-4 z-10">
-                <span class="px-4 py-2 bg-green-600/90 backdrop-blur-sm text-white text-xs font-bold rounded-full uppercase tracking-wide">Mobile App</span>
-              </div>
-              
-              <div class="absolute bottom-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                <div class="px-4 py-2 bg-white/90 backdrop-blur-sm text-gray-900 text-sm font-semibold rounded-xl flex items-center gap-2 hover:bg-white transition-colors">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                  </svg>
-                  View Details
-                </div>
-              </div>
-            </div>
-            
-            <div class="project-content p-8 relative">
-              <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-green-400/20 to-emerald-400/20 rounded-full blur-2xl"></div>
-              
-              <h3 class="text-2xl font-bold font-space text-gray-900 mb-3 relative z-10">Skintastic</h3>
-              <p class="text-gray-600 font-inter text-base mb-6 line-clamp-3 leading-relaxed relative z-10">Skintastic is your all-in-one app for sustainable skincare, blending eco-conscious packaging with refillable solutions.</p>
-              
-              <div class="tech-stack flex flex-wrap gap-2 mb-6 relative z-10">
-                <span class="px-4 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">Figma</span>
-                <span class="px-4 py-2 bg-gradient-to-r from-emerald-500 to-emerald-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">Sustainability</span>
-              </div>
-              
-              <div class="flex items-center justify-between text-sm text-gray-500 relative z-10">
-                <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M7 2a2 2 0 00-2 2v12a2 2 0 002 2h6a2 2 0 002-2V4a2 2 0 00-2-2H7zm3 14a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Mobile Design</span>
-                </div>
-                <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Eco-Friendly</span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <!-- CTA Buttons -->
+        <div class="flex flex-wrap gap-3 animate-slide-up" style="animation-delay: 0.55s">
+          <a href="#portfolio" class="home-btn-primary">View My Work</a>
+          <a href="#contact" class="home-btn-secondary">Get In Touch</a>
+        </div>
 
-          <!-- Project 3: CLminton -->
-          <div class="enhanced-project-card group relative bg-gradient-to-br from-white/95 to-white/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-3xl hover:-translate-y-3 border border-white/30" onclick="openProjectModal('CLminton', 'CLminton is a badminton store offering quality rackets. Built with Java-based system with MySQL integration to manage inventory and transactions efficiently. Using OOP principles, the system models products, users, and sales as objects, enhancing store operations and data accuracy.', ['Java', 'MySQL', 'OOP'], 'https://drive.google.com/drive/folders/10kSg4Hgw8KrDYJ406MZMwxG6Po9twPB7', 'assets/clminton.png')">
-            <div class="project-image-container relative h-56 overflow-hidden">
-              <img src="assets/clminton.png" alt="CLminton" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div class="absolute top-4 left-4 z-10">
-                <span class="px-4 py-2 bg-orange-600/90 backdrop-blur-sm text-white text-xs font-bold rounded-full uppercase tracking-wide">Web Development</span>
-              </div>
-              
-              <div class="absolute bottom-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                <div class="px-4 py-2 bg-white/90 backdrop-blur-sm text-gray-900 text-sm font-semibold rounded-xl flex items-center gap-2 hover:bg-white transition-colors">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                  </svg>
-                  View Details
-                </div>
-              </div>
-            </div>
-            
-            <div class="project-content p-8 relative">
-              <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-orange-400/20 to-red-400/20 rounded-full blur-2xl"></div>
-              
-              <h3 class="text-2xl font-bold font-space text-gray-900 mb-3 relative z-10">CLminton</h3>
-              <p class="text-gray-600 font-inter text-base mb-6 line-clamp-3 leading-relaxed relative z-10">CLminton is a badminton store offering quality rackets. Built with Java-based system with MySQL integration.</p>
-              
-              <div class="tech-stack flex flex-wrap gap-2 mb-6 relative z-10">
-                <span class="px-4 py-2 bg-gradient-to-r from-orange-500 to-orange-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">Java</span>
-                <span class="px-4 py-2 bg-gradient-to-r from-red-500 to-red-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">MySQL</span>
-              </div>
-              
-              <div class="flex items-center justify-between text-sm text-gray-500 relative z-10">
-                <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M2 5a2 2 0 012-2h12a2 2 0 012 2v10a2 2 0 01-2 2H4a2 2 0 01-2-2V5zm3.293 1.293a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 01-1.414-1.414L7.586 10 5.293 7.707a1 1 0 010-1.414zM11 12a1 1 0 100 2h3a1 1 0 100-2h-3z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Full Stack</span>
-                </div>
-                <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4 text-orange-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
-                    <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 1 1 0 000 2H6a2 2 0 100 4h2a2 2 0 100 4h2a1 1 0 100 2 2 2 0 01-2 2H6a2 2 0 01-2-2V5z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Database</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 4: Stellarity -->
-          <div class="enhanced-project-card group relative bg-gradient-to-br from-white/95 to-white/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-3xl hover:-translate-y-3 border border-white/30" onclick="openProjectModal('Stellarity', 'Stellarity connects astronomy enthusiasts across Indonesia through a dynamic platform that blends observation, learning, and community. With an intuitive interface and interactive features, Stellarity empowers users to explore the cosmos, share insights, and grow together as a passionate stargazing community.', ['Figma', 'UI/UX Design'], 'https://www.figma.com/design/sbCUMEMKUkLyDIN3AmoD1O/Stellarity?node-id=0-1&t=6DCzV43XcQTgqedd-1', 'assets/stellarity.png')">
-            <div class="project-image-container relative h-56 overflow-hidden">
-              <img src="assets/stellarity.png" alt="Stellarity" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div class="absolute top-4 left-4 z-10">
-                <span class="px-4 py-2 bg-indigo-600/90 backdrop-blur-sm text-white text-xs font-bold rounded-full uppercase tracking-wide">Web Platform</span>
-              </div>
-              
-              <div class="absolute bottom-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                <div class="px-4 py-2 bg-white/90 backdrop-blur-sm text-gray-900 text-sm font-semibold rounded-xl flex items-center gap-2 hover:bg-white transition-colors">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                  </svg>
-                  View Details
-                </div>
-              </div>
-            </div>
-            
-            <div class="project-content p-8 relative">
-              <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-indigo-400/20 to-purple-400/20 rounded-full blur-2xl"></div>
-              
-              <h3 class="text-2xl font-bold font-space text-gray-900 mb-3 relative z-10">Stellarity</h3>
-              <p class="text-gray-600 font-inter text-base mb-6 line-clamp-3 leading-relaxed relative z-10">Stellarity connects astronomy enthusiasts across Indonesia through a dynamic platform that blends observation, learning, and community.</p>
-              
-              <div class="tech-stack flex flex-wrap gap-2 mb-6 relative z-10">
-                <span class="px-4 py-2 bg-gradient-to-r from-indigo-500 to-indigo-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">Figma</span>
-                <span class="px-4 py-2 bg-gradient-to-r from-purple-500 to-purple-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">Web Design</span>
-              </div>
-              
-              <div class="flex items-center justify-between text-sm text-gray-500 relative z-10">
-                <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"></path>
-                  </svg>
-                  <span>Platform</span>
-                </div>
-                <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4 text-indigo-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"></path>
-                  </svg>
-                  <span>Community</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 5: Skinout -->
-          <div class="enhanced-project-card group relative bg-gradient-to-br from-white/95 to-white/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-3xl hover:-translate-y-3 border border-white/30" onclick="openProjectModal('Skinout', 'Skinout transforms the beauty industry by combining AI-powered skincare personalization with eco-friendly solutions. With features like recycling pick-up, price negotiation, and order tracking, it simplifies the shopping experience while promoting informed and sustainable choices.', ['Figma', 'UI/UX Design', 'AI Integration'], 'https://www.figma.com/design/GxdoT4XcA8dFnMBK4voYLq/SkinOut-2.0?node-id=0-1&t=fS0QTegDogT7mluL-1', 'assets/skinout.png')">
-            <div class="project-image-container relative h-56 overflow-hidden">
-              <img src="assets/skinout.png" alt="Skinout" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div class="absolute top-4 left-4 z-10">
-                <span class="px-4 py-2 bg-pink-600/90 backdrop-blur-sm text-white text-xs font-bold rounded-full uppercase tracking-wide">AI & Beauty</span>
-              </div>
-              
-              <div class="absolute bottom-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                <div class="px-4 py-2 bg-white/90 backdrop-blur-sm text-gray-900 text-sm font-semibold rounded-xl flex items-center gap-2 hover:bg-white transition-colors">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                  </svg>
-                  View Details
-                </div>
-              </div>
-            </div>
-            
-            <div class="project-content p-8 relative">
-              <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-pink-400/20 to-rose-400/20 rounded-full blur-2xl"></div>
-              
-              <h3 class="text-2xl font-bold font-space text-gray-900 mb-3 relative z-10">Skinout</h3>
-              <p class="text-gray-600 font-inter text-base mb-6 line-clamp-3 leading-relaxed relative z-10">Skinout transforms the beauty industry by combining AI-powered skincare personalization with eco-friendly solutions.</p>
-              
-              <div class="tech-stack flex flex-wrap gap-2 mb-6 relative z-10">
-                <span class="px-4 py-2 bg-gradient-to-r from-pink-500 to-pink-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">Figma</span>
-                <span class="px-4 py-2 bg-gradient-to-r from-rose-500 to-rose-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">AI Integration</span>
-              </div>
-              
-              <div class="flex items-center justify-between text-sm text-gray-500 relative z-10">
-                <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"></path>
-                    <path fill-rule="evenodd" d="M4 5a2 2 0 012-2 1 1 0 000 2H6a2 2 0 100 4h2a2 2 0 100 4h2a1 1 0 100 2 2 2 0 01-2 2H6a2 2 0 01-2-2V5z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span>AI Platform</span>
-                </div>
-                <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4 text-pink-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Innovative</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 6: Krealogi -->
-          <div class="enhanced-project-card group relative bg-gradient-to-br from-white/95 to-white/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-3xl hover:-translate-y-3 border border-white/30" onclick="openProjectModal('Krealogi', 'In a team of four, I helped redesign Du Anyam\'s platform to support local handicrafts. We built a mobile-friendly payment UI with vouchers and redesigned Krealogi into a more modern, interactive, and user-friendly website.', ['Figma', 'UI/UX Design', 'Team Project'], 'https://www.figma.com/design/aoAWNTdx2YtPgy942tXigh/AoL-UXRD-Krealogi---Kelompok-13?node-id=0-1&t=zO3M8rGYYmNCZu8h-1', 'assets/krealogi.png')">
-            <div class="project-image-container relative h-56 overflow-hidden">
-              <img src="assets/krealogi.png" alt="Krealogi" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div class="absolute top-4 left-4 z-10">
-                <span class="px-4 py-2 bg-teal-600/90 backdrop-blur-sm text-white text-xs font-bold rounded-full uppercase tracking-wide">Redesign</span>
-              </div>
-              
-              <div class="absolute bottom-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                <div class="px-4 py-2 bg-white/90 backdrop-blur-sm text-gray-900 text-sm font-semibold rounded-xl flex items-center gap-2 hover:bg-white transition-colors">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                  </svg>
-                  View Details
-                </div>
-              </div>
-            </div>
-            
-            <div class="project-content p-8 relative">
-              <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-teal-400/20 to-cyan-400/20 rounded-full blur-2xl"></div>
-              
-              <h3 class="text-2xl font-bold font-space text-gray-900 mb-3 relative z-10">Krealogi</h3>
-              <p class="text-gray-600 font-inter text-base mb-6 line-clamp-3 leading-relaxed relative z-10">In a team of four, I helped redesign Du Anyam's platform to support local handicrafts with mobile-friendly payment UI.</p>
-              
-              <div class="tech-stack flex flex-wrap gap-2 mb-6 relative z-10">
-                <span class="px-4 py-2 bg-gradient-to-r from-teal-500 to-teal-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">Figma</span>
-                <span class="px-4 py-2 bg-gradient-to-r from-cyan-500 to-cyan-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">Team Project</span>
-              </div>
-              
-              <div class="flex items-center justify-between text-sm text-gray-500 relative z-10">
-                <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
-                  </svg>
-                  <span>Team Design</span>
-                </div>
-                <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4 text-teal-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Social Impact</span>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Project 7: BioCycleXpert -->
-          <div class="enhanced-project-card group relative bg-gradient-to-br from-white/95 to-white/80 backdrop-blur-xl rounded-3xl shadow-2xl overflow-hidden cursor-pointer transform transition-all duration-500 hover:scale-105 hover:shadow-3xl hover:-translate-y-3 border border-white/30" onclick="openProjectModal('BioCycleXpert', 'This project promotes a profitable and eco-friendly farming system by converting substandard crops into livestock feed or organic fertilizer. It also creates a market for non-standard products and provides training to improve farmers\' skills in agriculture and waste management—helping them thrive sustainably.', ['Figma', 'UI/UX Design', 'Sustainability'], 'https://www.figma.com/design/wxGBDJZuSz9Ybv2gk3HExb/Project-ISAD-ENTRE-Prototype?node-id=0-1&t=ZWLQHT0rLAFtIUGG-', 'assets/biocyclexpert.png')">
-            <div class="project-image-container relative h-56 overflow-hidden">
-              <img src="assets/biocyclexpert.png" alt="BioCycleXpert" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" />
-              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
-              <div class="absolute top-4 left-4 z-10">
-                <span class="px-4 py-2 bg-lime-600/90 backdrop-blur-sm text-white text-xs font-bold rounded-full uppercase tracking-wide">Agriculture Tech</span>
-              </div>
-              
-              <div class="absolute bottom-4 right-4 z-10 opacity-0 group-hover:opacity-100 transition-all duration-500 transform translate-y-4 group-hover:translate-y-0">
-                <div class="px-4 py-2 bg-white/90 backdrop-blur-sm text-gray-900 text-sm font-semibold rounded-xl flex items-center gap-2 hover:bg-white transition-colors">
-                  <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"></path>
-                  </svg>
-                  View Details
-                </div>
-              </div>
-            </div>
-            
-            <div class="project-content p-8 relative">
-              <div class="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-lime-400/20 to-green-400/20 rounded-full blur-2xl"></div>
-              
-              <h3 class="text-2xl font-bold font-space text-gray-900 mb-3 relative z-10">BioCycleXpert</h3>
-              <p class="text-gray-600 font-inter text-base mb-6 line-clamp-3 leading-relaxed relative z-10">This project promotes a profitable and eco-friendly farming system by converting substandard crops into livestock feed or organic fertilizer.</p>
-              
-              <div class="tech-stack flex flex-wrap gap-2 mb-6 relative z-10">
-                <span class="px-4 py-2 bg-gradient-to-r from-lime-500 to-lime-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">Figma</span>
-                <span class="px-4 py-2 bg-gradient-to-r from-green-500 to-green-600 text-white text-sm font-semibold rounded-xl hover:shadow-lg transition-all duration-300 hover:scale-105">Sustainability</span>
-              </div>
-              
-              <div class="flex items-center justify-between text-sm text-gray-500 relative z-10">
-                <div class="flex items-center gap-2">
-                  <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M5 2a1 1 0 011 1v1h1a1 1 0 010 2H6v1a1 1 0 01-2 0V6H3a1 1 0 010-2h1V3a1 1 0 011-1zm0 10a1 1 0 011 1v1h1a1 1 0 110 2H6v1a1 1 0 11-2 0v-1H3a1 1 0 110-2h1v-1a1 1 0 011-1zM12 2a1 1 0 01.967.744L14.146 7.2 17.5 9.134a1 1 0 010 1.732l-3.354 1.935-1.18 4.455a1 1 0 01-1.933 0L9.854 12.8 6.5 10.866a1 1 0 010-1.732l3.354-1.935 1.18-4.455A1 1 0 0112 2z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span>AgriTech</span>
-                </div>
-                <div class="flex items-center gap-1">
-                  <svg class="w-4 h-4 text-lime-500" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
-                  </svg>
-                  <span>Eco-Friendly</span>
-                </div>
-              </div>
-            </div>
-          </div>
+        <!-- Social Links -->
+        <div class="flex gap-3 animate-slide-up" style="animation-delay: 0.65s">
+          <a href="https://linkedin.com/in/rahmathanifmahasetyaputra" target="_blank" class="home-social-btn" aria-label="LinkedIn">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn" class="w-5 h-5 filter brightness-0 opacity-70" />
+          </a>
+          <a href="mailto:rahmathanif.work@gmail.com" class="home-social-btn" aria-label="Email">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Email" class="w-5 h-5 filter brightness-0 opacity-70" />
+          </a>
+          <a href="https://drive.google.com/file/d/1kvsvDliFCLsZtY1_VX2aymeOj1FZ24IQ/view?usp=sharing" target="_blank" class="home-social-btn" aria-label="Resume">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/readthedocs.svg" alt="Resume" class="w-5 h-5 filter brightness-0 opacity-70" />
+          </a>
         </div>
       </div>
-    </section>
 
-    <!-- Enhanced Project Modal -->
-    <div id="projectModal" class="modal fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-50 p-4 hidden opacity-0 transition-opacity duration-300">
-      <div class="modal-content bg-white/95 backdrop-blur-md rounded-3xl p-6 md:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 relative" onclick="event.stopPropagation()">
-        <!-- Enhanced Close Button -->
-        <button class="close-btn absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-white transition-all duration-200 shadow-lg hover:shadow-xl z-10" onclick="closeProjectModal()" aria-label="Close modal">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
-          </svg>
-        </button>
-        
-        <!-- Modal Image Container -->
-        <div class="modal-image-container mb-6">
-          <img id="modalImage" src="" alt="" class="modal-img w-full h-auto max-h-64 md:max-h-80 object-contain rounded-2xl bg-gray-50">
-        </div>
-        
-        <!-- Modal Content -->
-        <div class="modal-content-inner">
-          <h3 id="modalTitle" class="modal-title text-xl md:text-2xl font-bold font-space text-gray-900 mb-4 pr-8"></h3>
-          <p id="modalDesc" class="modal-desc text-gray-600 font-inter text-sm md:text-base mb-6 leading-relaxed"></p>
-          
-          <!-- Tech Stack -->
-          <div id="modalTechStack" class="tech-stack flex flex-wrap gap-2 mb-6"></div>
-          
-          <!-- Action Button -->
-          <a id="modalLink" href="" target="_blank" rel="noopener noreferrer" class="figma-link inline-flex items-center justify-center w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 text-center">
-            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-            </svg>
-            View Project on Figma
-          </a>
+      <!-- Right: Profile Image -->
+      <div class="home-image flex-shrink-0 animate-fade-in" style="animation-delay: 0.5s">
+        <div class="home-photo-wrapper">
+          <!-- Gradient ring -->
+          <div class="home-photo-ring"></div>
+          <!-- Photo -->
+          <div class="home-photo-frame">
+            <img src="assets/rahmat-hanif.jpg" alt="Rahmat Hanif" class="home-photo-img" />
+          </div>
+          <!-- Elegant info chip bottom -->
+          <div class="home-photo-chip">
+            <span class="chip-icon">🏆</span>
+            <span>SAP Certified</span>
+          </div>
         </div>
       </div>
     </div>
 
-    <!-- 👤 Profile Section -->
-    <section id="profile" class="section profile py-8">
-      <div class="content glass-section max-w-4xl mx-auto px-6 py-8">
-        <h2 class="text-3xl lg:text-4xl font-bold font-space text-gray-900 mb-6 text-center">Profile</h2>
-        <p class="text-lg font-inter text-gray-700 text-center mb-8 max-w-3xl mx-auto">
-          Ambitious Information Systems student with a passion for bridging
-          technology and business through IT consulting, innovative UI/UX design,
-          and strategic business analysis.
-        </p>
+    <!-- Scroll indicator -->
+    <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2">
+      <div class="scroll-indicator">
+        <div class="scroll-dot"></div>
+      </div>
+    </div>
+  </section>
 
-        <!-- Skills Section -->
-        <div class="mb-12">
-          <h3 class="text-2xl font-bold font-space text-gray-900 mb-6 text-center">💻 My Skills</h3>
-          <p class="text-center font-inter text-gray-600 mb-8">
-            Here are the key technologies and soft skills I leverage to deliver
-            innovative solutions and drive business value.
-          </p>
-          
-          <div class="skills-categories-grid grid grid-cols-1 md:grid-cols-2 gap-8">
-            <!-- Technical Skills -->
-            <div class="enhanced-skill-card bg-gradient-to-br from-white/95 to-white/85 backdrop-blur-xl rounded-2xl p-8 shadow-xl border border-white/30 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-              <div class="skill-header flex items-center justify-between mb-6">
-                <h4 class="font-bold font-space text-purple-600 text-xl">Technical Skills</h4>
-                <div class="skill-icon w-12 h-12 bg-gradient-to-br from-purple-500 to-purple-600 rounded-xl flex items-center justify-center">
-                  <svg class="w-7 h-7 filter brightness-0 invert" fill="currentColor" viewBox="0 0 20 20">
-                    <path fill-rule="evenodd" d="M12.316 3.051a1 1 0 01.633 1.265l-4 12a1 1 0 11-1.898-.632l4-12a1 1 0 011.265-.633zM5.707 6.293a1 1 0 010 1.414L3.414 10l2.293 2.293a1 1 0 11-1.414 1.414l-3-3a1 1 0 010-1.414l3-3a1 1 0 011.414 0zm8.586 0a1 1 0 011.414 0l3 3a1 1 0 010 1.414l-3 3a1 1 0 11-1.414-1.414L16.586 10l-2.293-2.293a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                  </svg>
-                </div>
+  <!-- 🎓 Education Section -->
+  <section id="education" class="section py-8">
+    <div class="content glass-section max-w-4xl mx-auto px-6 py-8">
+      <h2 class="text-3xl lg:text-4xl font-bold font-space text-gray-900 mb-2 text-center">Education</h2>
+      <p class="text-sm text-gray-500 font-inter text-center mb-8">Academic background &amp; achievements</p>
+
+      <div class="exp-list">
+
+        <!-- BINUS University -->
+        <div class="exp-card timeline-item">
+          <div class="exp-dot"></div>
+          <div class="exp-body">
+            <div class="exp-header">
+              <div class="exp-avatar" style="background:linear-gradient(135deg,#2563eb,#0ea5e9);font-size:0.75rem">BU</div>
+              <div class="exp-title-group">
+                <h3 class="exp-role">Bachelor of Information Systems</h3>
+                <span class="exp-company">Binus University</span>
               </div>
-              
-              <div class="technical-skills space-y-4">
-                <div class="skill-item">
-                  <div class="flex items-center justify-between">
-                    <span class="font-semibold font-inter text-gray-800 text-lg">Figma</span>
-                    <span class="text-sm font-semibold text-purple-600">Expert Level</span>
-                  </div>
-                </div>
-                
-                <div class="skill-item">
-                  <div class="flex items-center justify-between">
-                    <span class="font-semibold font-inter text-gray-800 text-lg">Microsoft Office</span>
-                    <span class="text-sm font-semibold text-purple-600">Expert Level</span>
-                  </div>
-                </div>
-                
-                <div class="skill-item">
-                  <div class="flex items-center justify-between">
-                    <span class="font-semibold font-inter text-gray-800 text-lg">SQL</span>
-                    <span class="text-sm font-semibold text-purple-600">Intermediate</span>
-                  </div>
-                </div>
-                
-                <div class="skill-item">
-                  <div class="flex items-center justify-between">
-                    <span class="font-semibold font-inter text-gray-800 text-lg">HTML / CSS</span>
-                    <span class="text-sm font-semibold text-purple-600">Beginner</span>
-                  </div>
-                </div>
-                
-                <div class="skill-item">
-                  <div class="flex items-center justify-between">
-                    <span class="font-semibold font-inter text-gray-800 text-lg">Java</span>
-                    <span class="text-sm font-semibold text-purple-600">Intermediate</span>
-                  </div>
-                </div>
-                
-                <div class="skill-item">
-                  <div class="flex items-center justify-between">
-                    <span class="font-semibold font-inter text-gray-800 text-lg">React</span>
-                    <span class="text-sm font-semibold text-purple-600">Beginner</span>
-                  </div>
-                </div>
-                
-                <div class="skill-item">
-                  <div class="flex items-center justify-between">
-                    <span class="font-semibold font-inter text-gray-800 text-lg">Python</span>
-                    <span class="text-sm font-semibold text-purple-600">Beginner</span>
-                  </div>
-                </div>
-              </div>
+              <span class="exp-date-badge">Aug 2022 – Jun 2026</span>
             </div>
+            <div class="exp-meta-row">
+              <span class="exp-location">📍 Jakarta, Indonesia</span>
+              <span class="exp-tag exp-tag--blue">Undergraduate</span>
+              <span class="exp-tag exp-tag--purple" style="background:rgba(79,70,229,0.08);color:#4338ca;border-color:rgba(79,70,229,0.15)">GPA 3.69 / 4.00</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Relevant coursework: ERP &amp; SAP S/4HANA, UI/UX Design, Business Analysis, System Analysis, Quality Assurance, Object-Oriented Programming.</li>
+              <li>Active member of the Information Systems Laboratory and Case Study Club.</li>
+              <li>Expected graduation: June 2026.</li>
+            </ul>
+          </div>
+        </div>
 
-            <!-- Soft Skills -->
-            <div class="enhanced-skill-card bg-gradient-to-br from-white/95 to-white/85 backdrop-blur-xl rounded-2xl p-8 shadow-xl border border-white/30 hover:shadow-2xl transition-all duration-500 hover:-translate-y-2">
-              <div class="skill-header flex items-center justify-between mb-6">
-                <h4 class="font-bold font-space text-blue-600 text-xl">Soft Skills</h4>
-                <div class="skill-icon w-12 h-12 bg-gradient-to-br from-blue-500 to-blue-600 rounded-xl flex items-center justify-center">
-                  <svg class="w-7 h-7 filter brightness-0 invert" fill="currentColor" viewBox="0 0 20 20">
-                    <path d="M13 6a3 3 0 11-6 0 3 3 0 016 0zM18 8a2 2 0 11-4 0 2 2 0 014 0zM14 15a4 4 0 00-8 0v3h8v-3zM6 8a2 2 0 11-4 0 2 2 0 014 0zM16 18v-3a5.972 5.972 0 00-.75-2.906A3.005 3.005 0 0119 15v3h-3zM4.75 12.094A5.973 5.973 0 004 15v3H1v-3a3 3 0 013.75-2.906z"></path>
-                  </svg>
-                </div>
+        <!-- SMA Negeri 1 Tangerang Selatan (optional — add if desired) -->
+
+      </div>
+    </div>
+  </section>
+
+  <!-- 💼 Experience Section -->
+  <section id="experience" class="section py-8">
+    <div class="content glass-section max-w-4xl mx-auto px-6 py-8">
+      <h2 class="text-3xl lg:text-4xl font-bold font-space text-gray-900 mb-2 text-center">Experience</h2>
+      <p class="text-sm text-gray-500 font-inter text-center mb-8">Professional journey &amp; roles</p>
+
+      <div class="exp-list">
+
+        <!-- Abeam Consulting -->
+        <div class="exp-card timeline-item">
+          <div class="exp-dot"></div>
+          <div class="exp-body">
+            <div class="exp-header">
+              <div class="exp-avatar" style="background: linear-gradient(135deg,#7c3aed,#4f46e5)">AC</div>
+              <div class="exp-title-group">
+                <h3 class="exp-role">SAP Consultant</h3>
+                <span class="exp-company">Abeam Consulting</span>
               </div>
-              
-              <div class="soft-skills space-y-4">
-                <div class="skill-item">
-                  <div class="flex items-center justify-between">
-                    <span class="font-semibold font-inter text-gray-800 text-lg">Problem Solving</span>
-                    <span class="text-sm font-semibold text-blue-600">Expert Level</span>
-                  </div>
-                </div>
-                
-                <div class="skill-item">
-                  <div class="flex items-center justify-between">
-                    <span class="font-semibold font-inter text-gray-800 text-lg">Communication</span>
-                    <span class="text-sm font-semibold text-blue-600">Expert Level</span>
-                  </div>
-                </div>
-                
-                <div class="skill-item">
-                  <div class="flex items-center justify-between">
-                    <span class="font-semibold font-inter text-gray-800 text-lg">Leadership</span>
-                    <span class="text-sm font-semibold text-blue-600">Expert Level</span>
-                  </div>
-                </div>
-                
-                <div class="skill-item">
-                  <div class="flex items-center justify-between">
-                    <span class="font-semibold font-inter text-gray-800 text-lg">Analytical Skills</span>
-                    <span class="text-sm font-semibold text-blue-600">Advanced</span>
-                  </div>
-                </div>
-                
-                <div class="skill-item">
-                  <div class="flex items-center justify-between">
-                    <span class="font-semibold font-inter text-gray-800 text-lg">Research</span>
-                    <span class="text-sm font-semibold text-blue-600">Advanced</span>
-                  </div>
-                </div>
-                
-                <div class="skill-item">
-                  <div class="flex items-center justify-between">
-                    <span class="font-semibold font-inter text-gray-800 text-lg">Indonesian</span>
-                    <span class="text-sm font-semibold text-blue-600">Native</span>
-                  </div>
-                </div>
-                
-                <div class="skill-item">
-                  <div class="flex items-center justify-between">
-                    <span class="font-semibold font-inter text-gray-800 text-lg">English</span>
-                    <span class="text-sm font-semibold text-blue-600">Full Professional</span>
-                  </div>
-                </div>
+              <span class="exp-date-badge">Mar 2026 – Present</span>
+            </div>
+            <div class="exp-meta-row">
+              <span class="exp-location">📍 Jakarta, Indonesia</span>
+              <span class="exp-tag exp-tag--purple">SAP Consulting</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Engaged in end-to-end SAP implementation and consulting projects, delivering business process optimization for enterprise clients.</li>
+              <li>Collaborated with cross-functional teams to design and configure SAP S/4HANA solutions aligned with client business requirements.</li>
+              <li>Supported functional design, system testing, and user training to ensure seamless go-live and adoption.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PT. Phincon -->
+        <div class="exp-card timeline-item">
+          <div class="exp-dot"></div>
+          <div class="exp-body">
+            <div class="exp-header">
+              <div class="exp-avatar" style="background: linear-gradient(135deg,#0ea5e9,#2563eb)">PH</div>
+              <div class="exp-title-group">
+                <h3 class="exp-role">Business Analyst Intern</h3>
+                <span class="exp-company">PT. Phincon</span>
               </div>
+              <span class="exp-date-badge">Feb 2025 – Feb 2026</span>
+            </div>
+            <div class="exp-meta-row">
+              <span class="exp-location">📍 Jakarta, Indonesia</span>
+              <span class="exp-tag exp-tag--blue">Business Analysis</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Led end-to-end System Integration Testing (SIT) and User Acceptance Testing (UAT) for 3 clients, designing test cases and executing 3,000+ scenarios.</li>
+              <li>Collaborated cross-functionally with QA, developers, and PMs to analyze and resolve system defects.</li>
+              <li>Compiled structured testing documentation improving audits and decision-making.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- PT. Cipta Integrasi Nusantara -->
+        <div class="exp-card timeline-item">
+          <div class="exp-dot"></div>
+          <div class="exp-body">
+            <div class="exp-header">
+              <div class="exp-avatar" style="background: linear-gradient(135deg,#ec4899,#f43f5e)">CI</div>
+              <div class="exp-title-group">
+                <h3 class="exp-role">UI/UX Designer Intern</h3>
+                <span class="exp-company">Cipta Integrasi Nusantara</span>
+              </div>
+              <span class="exp-date-badge">Jul 2024 – Oct 2024</span>
+            </div>
+            <div class="exp-meta-row">
+              <span class="exp-location">📍 Yogyakarta, Indonesia</span>
+              <span class="exp-tag exp-tag--pink">UI/UX Design</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Conducted user research, competitor analysis, and market trend studies to define user needs.</li>
+              <li>Designed functional layouts and intuitive UI concepts aligned with research findings.</li>
+              <li>Collaborated with cross-functional teams to implement user-centered features.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Laboratory Assistant -->
+        <div class="exp-card timeline-item">
+          <div class="exp-dot"></div>
+          <div class="exp-body">
+            <div class="exp-header">
+              <div class="exp-avatar" style="background: linear-gradient(135deg,#10b981,#059669)">BU</div>
+              <div class="exp-title-group">
+                <h3 class="exp-role">IS Laboratory Assistant</h3>
+                <span class="exp-company">BINUS University</span>
+              </div>
+              <span class="exp-date-badge">Nov 2023 – Jan 2025</span>
+            </div>
+            <div class="exp-meta-row">
+              <span class="exp-location">📍 Jakarta, Indonesia</span>
+              <span class="exp-tag exp-tag--green">Teaching</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Instructed and mentored 100+ students in UX Research &amp; Design courses across 5 classes.</li>
+              <li>Conducted grading and feedback sessions.</li>
+              <li>Participated in weekly teaching methodology training.</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Case Study Club -->
+        <div class="exp-card timeline-item">
+          <div class="exp-dot"></div>
+          <div class="exp-body">
+            <div class="exp-header">
+              <div class="exp-avatar" style="background: linear-gradient(135deg,#f59e0b,#d97706)">CS</div>
+              <div class="exp-title-group">
+                <h3 class="exp-role">Case Study Club Member</h3>
+                <span class="exp-company">BINUS University</span>
+              </div>
+              <span class="exp-date-badge">Nov 2023 – Jan 2025</span>
+            </div>
+            <div class="exp-meta-row">
+              <span class="exp-location">📍 Jakarta, Indonesia</span>
+              <span class="exp-tag exp-tag--amber">Strategy</span>
+            </div>
+            <ul class="exp-bullets">
+              <li>Trained in problem-solving and business case strategy.</li>
+              <li>Enhanced UI/UX expertise through hands-on projects and competitions.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div><!-- end exp-list -->
+    </div><!-- end glass-section -->
+  </section>
+
+  <!-- 🧩 My Projects Section -->
+  <section id="portfolio" class="section py-10">
+    <div class="content glass-section max-w-6xl mx-auto px-6 py-8">
+      <h2 class="text-3xl lg:text-4xl font-bold font-space text-gray-900 mb-2 text-center">My Projects</h2>
+      <p class="text-sm text-gray-500 font-inter text-center mb-8">Design, development &amp; creative work</p>
+
+      <div class="proj-grid">
+
+        <!-- 1: Tomodime -->
+        <div class="proj-card">
+          <div class="proj-img-wrap">
+            <img src="assets/tomodime.png" alt="Tomodime" class="proj-img" />
+            <span class="proj-badge proj-badge--purple">UI/UX Design</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Tomodime</h3>
+            <p class="proj-desc">UI design for anime lovers — event discovery, fan forums, and an integrated cosplay store in one app.</p>
+            <div class="proj-tags">
+              <span class="proj-tag">Figma</span>
+              <span class="proj-tag">UI Design</span>
+            </div>
+            <div class="proj-footer">
+              <a href="https://www.figma.com/design/WNW4IORTs0BqE2Y3X2Pf9m/UX---Rahmat-Hanif-TM?node-id=0-1&t=kbvheRIkICJnd1sq-1" target="_blank" class="proj-link-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+                Open in Figma
+              </a>
+              <button class="proj-details-btn" onclick="openProjectModal('Tomodime','Tomodime is a UI design for anime lovers, featuring event discovery, fan forums, and an integrated cosplay store. Users can stay updated on conventions, share ideas, and shop for costumes—all in one app.',['Figma','UI/UX Design'],'https://www.figma.com/design/WNW4IORTs0BqE2Y3X2Pf9m/UX---Rahmat-Hanif-TM?node-id=0-1&t=kbvheRIkICJnd1sq-1','assets/tomodime.png')">Details</button>
             </div>
           </div>
         </div>
 
-        <!-- Certifications -->
-        <div class="mb-12">
-          <h3 class="text-2xl font-bold font-space text-gray-900 mb-6">Certifications</h3>
-          <div class="cert-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition-all duration-300">
-              <h4 class="font-bold font-space text-gray-900 mb-2">CCEP Indonesia Bootcamp 2025</h4>
-              <p class="font-inter text-gray-600 text-sm mb-2">Specialization in Supply Chain and exploring all CCEP business processes.</p>
-              <p class="font-inter text-gray-500 text-xs mb-3">Issued by: Life at FMCG</p>
-              <div class="flex flex-col gap-3">
-                <span class="cert-date inline-block px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full w-fit">Nov 2025</span>
-                <button onclick="window.open('https://credsverse.com/credentials/9fccd7ca-b343-45a4-8808-c0244db65a62', '_blank')" class="cert-button inline-flex items-center justify-center px-4 py-2 bg-yellow-600 text-white text-xs font-semibold rounded-full hover:bg-yellow-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg cursor-pointer">
-                  <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                  </svg>
-                  View Certificate
-                </button>
-              </div>
+        <!-- 2: Skintastic -->
+        <div class="proj-card">
+          <div class="proj-img-wrap">
+            <img src="assets/skintastic.png" alt="Skintastic" class="proj-img" />
+            <span class="proj-badge proj-badge--green">Mobile App</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Skintastic</h3>
+            <p class="proj-desc">Sustainable skincare app with smart search, community hub, refill tracking, and personalized skin analysis.</p>
+            <div class="proj-tags">
+              <span class="proj-tag">Figma</span>
+              <span class="proj-tag">Sustainability</span>
             </div>
-            <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border-l-4 border-red-500 hover:shadow-xl transition-all duration-300">
-              <h4 class="font-bold font-space text-gray-900 mb-2">ISO 27001: Information Security Management Systems</h4>
-              <p class="font-inter text-gray-600 text-sm mb-2">Information Security Management Systems Certified</p>
-              <p class="font-inter text-gray-500 text-xs mb-3">Issued by: Udemy</p>
-              <div class="flex flex-col gap-3">
-                <span class="cert-date inline-block px-3 py-1 bg-red-100 text-red-700 text-xs font-semibold rounded-full w-fit">Oct 2025</span>
-                <button onclick="window.open('https://www.udemy.com/certificate/UC-74111895-d436-4b0e-a059-b16b8a2c62be/', '_blank')" class="cert-button inline-flex items-center justify-center px-4 py-2 bg-red-600 text-white text-xs font-semibold rounded-full hover:bg-red-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg cursor-pointer">
-                  <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                  </svg>
-                  View Certificate
-                </button>
-              </div>
-            </div>
-            <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border-l-4 border-green-500 hover:shadow-xl transition-all duration-300">
-              <h4 class="font-bold font-space text-gray-900 mb-2">HackerRank SQL (Basic)</h4>
-              <p class="font-inter text-gray-600 text-sm mb-2">Problem Solving & Queries</p>
-              <p class="font-inter text-gray-500 text-xs mb-3">Issued by: HackerRank</p>
-              <div class="flex flex-col gap-3">
-                <span class="cert-date inline-block px-3 py-1 bg-green-100 text-green-700 text-xs font-semibold rounded-full w-fit">May 2025</span>
-                <button onclick="window.open('https://www.hackerrank.com/certificates/be43f355f25f', '_blank')" class="cert-button inline-flex items-center justify-center px-4 py-2 bg-green-600 text-white text-xs font-semibold rounded-full hover:bg-green-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg cursor-pointer">
-                  <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                  </svg>
-                  View Certificate
-                </button>
-              </div>
-            </div>
-            <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border-l-4 border-purple-500 hover:shadow-xl transition-all duration-300">
-              <h4 class="font-bold font-space text-gray-900 mb-2">SAP Certified Associate</h4>
-              <p class="font-inter text-gray-600 text-sm mb-2">Business Process Integration with SAP S/4HANA</p>
-              <p class="font-inter text-gray-500 text-xs mb-3">Issued by: SAP Indonesia</p>
-              <div class="flex flex-col gap-3">
-                <span class="cert-date inline-block px-3 py-1 bg-purple-100 text-purple-700 text-xs font-semibold rounded-full w-fit">Jan 2025</span>
-                <button onclick="window.open('https://www.credly.com/badges/9df41037-93ee-4fd4-81bc-410463e1bf1a', '_blank')" class="cert-button inline-flex items-center justify-center px-4 py-2 bg-purple-600 text-white text-xs font-semibold rounded-full hover:bg-purple-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg cursor-pointer">
-                  <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                  </svg>
-                  View Certificate
-                </button>
-              </div>
-            </div>
-            <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border-l-4 border-blue-500 hover:shadow-xl transition-all duration-300">
-              <h4 class="font-bold font-space text-gray-900 mb-2">SAP Fundamental Using SAP S/4HANA</h4>
-              <p class="font-inter text-gray-600 text-sm mb-2">Certification of Participation</p>
-              <p class="font-inter text-gray-500 text-xs mb-3">Issued by: SAP Indonesia</p>
-              <div class="flex flex-col gap-3">
-                <span class="cert-date inline-block px-3 py-1 bg-blue-100 text-blue-700 text-xs font-semibold rounded-full w-fit">Aug 2024</span>
-                <button onclick="window.open('https://drive.google.com/file/d/1s13uARGF6-OnHhywkrPabCWTaeN0bjGh/view?usp=sharing', '_blank')" class="cert-button inline-flex items-center justify-center px-4 py-2 bg-blue-600 text-white text-xs font-semibold rounded-full hover:bg-blue-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg cursor-pointer">
-                  <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                  </svg>
-                  View Certificate
-                </button>
-              </div>
-            </div>
-            <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border-l-4 border-indigo-500 hover:shadow-xl transition-all duration-300">
-              <h4 class="font-bold font-space text-gray-900 mb-2">Basic Training</h4>
-              <p class="font-inter text-gray-600 text-sm mb-2">Leadership and Personal Development Program</p>
-              <p class="font-inter text-gray-500 text-xs mb-3">Issued by: AsiaWorks</p>
-              <div class="flex flex-col gap-3">
-                <span class="cert-date inline-block px-3 py-1 bg-indigo-100 text-indigo-700 text-xs font-semibold rounded-full w-fit">May 2024</span>
-                <button onclick="window.open('https://drive.google.com/file/d/1DbU3Ev0BQQF2P_CSPJUwkENeOTIFxiNe/view', '_blank')" class="cert-button inline-flex items-center justify-center px-4 py-2 bg-indigo-600 text-white text-xs font-semibold rounded-full hover:bg-indigo-700 transition-all duration-300 transform hover:scale-105 shadow-md hover:shadow-lg cursor-pointer">
-                  <svg class="w-3 h-3 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
-                  </svg>
-                  View Certificate
-                </button>
-              </div>
+            <div class="proj-footer">
+              <a href="https://www.figma.com/design/yGCzOiSA8cWi6oySeantgC/HI--FI-Project-UI-UX-LAB?node-id=0-1&t=bPKUH1YrQ4tjLjBK-1" target="_blank" class="proj-link-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+                Open in Figma
+              </a>
+              <button class="proj-details-btn" onclick="openProjectModal('Skintastic','Skintastic is your all-in-one app for sustainable skincare, blending eco-conscious packaging with refillable solutions. Featuring smart search, Skinciety (community hub), refill tracking, routine history, and personalized skin analysis.',['Figma','UI/UX Design'],'https://www.figma.com/design/yGCzOiSA8cWi6oySeantgC/HI--FI-Project-UI-UX-LAB?node-id=0-1&t=bPKUH1YrQ4tjLjBK-1','assets/skintastic.png')">Details</button>
             </div>
           </div>
         </div>
 
-        <!-- Awards -->
-        <div>
-          <h3 class="text-2xl font-bold font-space text-gray-900 mb-6">Honors & Awards</h3>
-          <div class="award-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition-all duration-300">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">[National]</span>
-                <h4 class="font-bold font-space text-gray-900">CCEP Indonesia Bootcamp Awardee</h4>
-              </div>
-              <p class="font-inter text-gray-600 text-sm mb-3">Specialization in Supply Chain and exploring all CCEP business processes</p>
-              <span class="award-date inline-block px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">Jul 2025</span>
+        <!-- 3: CLminton -->
+        <div class="proj-card">
+          <div class="proj-img-wrap">
+            <img src="assets/clminton.png" alt="CLminton" class="proj-img" />
+            <span class="proj-badge proj-badge--orange">Web Dev</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">CLminton</h3>
+            <p class="proj-desc">Java + MySQL badminton store with inventory &amp; transaction management using OOP principles.</p>
+            <div class="proj-tags">
+              <span class="proj-tag">Java</span>
+              <span class="proj-tag">MySQL</span>
+              <span class="proj-tag">OOP</span>
             </div>
-            <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition-all duration-300">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">[National]</span>
-                <h4 class="font-bold font-space text-gray-900">1st Winner</h4>
-              </div>
-              <p class="font-inter text-gray-600 text-sm mb-3">Gandeng Business Case Competition</p>
-              <span class="award-date inline-block px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">May 2025</span>
+            <div class="proj-footer">
+              <a href="https://drive.google.com/drive/folders/10kSg4Hgw8KrDYJ406MZMwxG6Po9twPB7" target="_blank" class="proj-link-btn proj-link-btn--drive">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M7.71 3.5L1.15 15l3.59 6.04L10.3 9.54 7.71 3.5zm.01 0h8.57L22.85 15h-7.5l-7.63-11.5zm8.56 0l2.58 6.04L22.85 15l-3.59 6.04L14.67 9.5l1.61-6z"/></svg>
+                View on Drive
+              </a>
+              <button class="proj-details-btn" onclick="openProjectModal('CLminton','CLminton is a badminton store offering quality rackets. Built with Java-based system with MySQL integration to manage inventory and transactions efficiently. Using OOP principles, the system models products, users, and sales as objects.',['Java','MySQL','OOP'],'https://drive.google.com/drive/folders/10kSg4Hgw8KrDYJ406MZMwxG6Po9twPB7','assets/clminton.png')">Details</button>
             </div>
-            <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition-all duration-300">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">[National]</span>
-                <h4 class="font-bold font-space text-gray-900">2nd Winner</h4>
-              </div>
-              <p class="font-inter text-gray-600 text-sm mb-3">DIG IN HIMSISFO Business IT Case Competition</p>
-              <span class="award-date inline-block px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">Feb 2025</span>
+          </div>
+        </div>
+
+        <!-- 4: Stellarity -->
+        <div class="proj-card">
+          <div class="proj-img-wrap">
+            <img src="assets/stellarity.png" alt="Stellarity" class="proj-img" />
+            <span class="proj-badge proj-badge--indigo">Web Platform</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Stellarity</h3>
+            <p class="proj-desc">Platform connecting Indonesia's astronomy enthusiasts — observation sharing, learning, and community.</p>
+            <div class="proj-tags">
+              <span class="proj-tag">Figma</span>
+              <span class="proj-tag">Web Design</span>
             </div>
-            <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition-all duration-300">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded-full">[International]</span>
-                <h4 class="font-bold font-space text-gray-900">3rd Winner</h4>
-              </div>
-              <p class="font-inter text-gray-600 text-sm mb-3">SxC International Summit Business Case Competition</p>
-              <span class="award-date inline-block px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">Dec 2024</span>
+            <div class="proj-footer">
+              <a href="https://www.figma.com/design/sbCUMEMKUkLyDIN3AmoD1O/Stellarity?node-id=0-1&t=6DCzV43XcQTgqedd-1" target="_blank" class="proj-link-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+                Open in Figma
+              </a>
+              <button class="proj-details-btn" onclick="openProjectModal('Stellarity','Stellarity connects astronomy enthusiasts across Indonesia through a dynamic platform that blends observation, learning, and community. With an intuitive interface and interactive features, Stellarity empowers users to explore the cosmos.',['Figma','UI/UX Design'],'https://www.figma.com/design/sbCUMEMKUkLyDIN3AmoD1O/Stellarity?node-id=0-1&t=6DCzV43XcQTgqedd-1','assets/stellarity.png')">Details</button>
             </div>
-            <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition-all duration-300">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">[National]</span>
-                <h4 class="font-bold font-space text-gray-900">Top 10</h4>
-              </div>
-              <p class="font-inter text-gray-600 text-sm mb-3">Business Case Simulation BRAND UI</p>
-              <span class="award-date inline-block px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">Sep 2024</span>
+          </div>
+        </div>
+
+        <!-- 5: Skinout -->
+        <div class="proj-card">
+          <div class="proj-img-wrap">
+            <img src="assets/skinout.png" alt="Skinout" class="proj-img" />
+            <span class="proj-badge proj-badge--pink">AI &amp; Beauty</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Skinout</h3>
+            <p class="proj-desc">AI-powered skincare personalization with eco-friendly features — recycling pick-up, price negotiation, and tracking.</p>
+            <div class="proj-tags">
+              <span class="proj-tag">Figma</span>
+              <span class="proj-tag">AI Integration</span>
             </div>
-            <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition-all duration-300">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">[National]</span>
-                <h4 class="font-bold font-space text-gray-900">Semifinalist</h4>
-              </div>
-              <p class="font-inter text-gray-600 text-sm mb-3">IO FEST UI/UX Competition</p>
-              <span class="award-date inline-block px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">Jun 2024</span>
+            <div class="proj-footer">
+              <a href="https://www.figma.com/design/GxdoT4XcA8dFnMBK4voYLq/SkinOut-2.0?node-id=0-1&t=fS0QTegDogT7mluL-1" target="_blank" class="proj-link-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+                Open in Figma
+              </a>
+              <button class="proj-details-btn" onclick="openProjectModal('Skinout','Skinout transforms the beauty industry by combining AI-powered skincare personalization with eco-friendly solutions. With features like recycling pick-up, price negotiation, and order tracking, it simplifies the shopping experience.',['Figma','UI/UX Design','AI Integration'],'https://www.figma.com/design/GxdoT4XcA8dFnMBK4voYLq/SkinOut-2.0?node-id=0-1&t=fS0QTegDogT7mluL-1','assets/skinout.png')">Details</button>
             </div>
-            <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition-all duration-300">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">[National]</span>
-                <h4 class="font-bold font-space text-gray-900">Top 7</h4>
-              </div>
-              <p class="font-inter text-gray-600 text-sm mb-3">Business Case PETROLIDA SPE ITS SC</p>
-              <span class="award-date inline-block px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">May 2024</span>
+          </div>
+        </div>
+
+        <!-- 6: Krealogi -->
+        <div class="proj-card">
+          <div class="proj-img-wrap">
+            <img src="assets/krealogi.png" alt="Krealogi" class="proj-img" />
+            <span class="proj-badge proj-badge--teal">Redesign</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">Krealogi</h3>
+            <p class="proj-desc">Team redesign of Du Anyam's platform — mobile payment UI with vouchers and a modern, user-friendly interface.</p>
+            <div class="proj-tags">
+              <span class="proj-tag">Figma</span>
+              <span class="proj-tag">Team Project</span>
             </div>
-            <div class="bg-white/80 backdrop-blur-sm rounded-xl p-6 shadow-lg border-l-4 border-yellow-500 hover:shadow-xl transition-all duration-300">
-              <div class="flex items-center gap-2 mb-2">
-                <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs font-bold rounded-full">[National]</span>
-                <h4 class="font-bold font-space text-gray-900">Top 20</h4>
-              </div>
-              <p class="font-inter text-gray-600 text-sm mb-3">LEAP MINI CASE CHALLENGE with GOKS! LINE</p>
-              <span class="award-date inline-block px-3 py-1 bg-yellow-100 text-yellow-700 text-xs font-semibold rounded-full">Jan 2024</span>
+            <div class="proj-footer">
+              <a href="https://www.figma.com/design/aoAWNTdx2YtPgy942tXigh/AoL-UXRD-Krealogi---Kelompok-13?node-id=0-1&t=zO3M8rGYYmNCZu8h-1" target="_blank" class="proj-link-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+                Open in Figma
+              </a>
+              <button class="proj-details-btn" onclick="openProjectModal('Krealogi','In a team of four, I helped redesign Du Anyam\'s platform to support local handicrafts. We built a mobile-friendly payment UI with vouchers and redesigned Krealogi into a more modern, interactive, and user-friendly website.',['Figma','UI/UX Design','Team Project'],'https://www.figma.com/design/aoAWNTdx2YtPgy942tXigh/AoL-UXRD-Krealogi---Kelompok-13?node-id=0-1&t=zO3M8rGYYmNCZu8h-1','assets/krealogi.png')">Details</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- 7: BioCycleXpert -->
+        <div class="proj-card">
+          <div class="proj-img-wrap">
+            <img src="assets/biocyclexpert.png" alt="BioCycleXpert" class="proj-img" />
+            <span class="proj-badge proj-badge--lime">AgriTech</span>
+          </div>
+          <div class="proj-body">
+            <h3 class="proj-title">BioCycleXpert</h3>
+            <p class="proj-desc">Eco-friendly farming system converting substandard crops into livestock feed or organic fertilizer.</p>
+            <div class="proj-tags">
+              <span class="proj-tag">Figma</span>
+              <span class="proj-tag">Sustainability</span>
+            </div>
+            <div class="proj-footer">
+              <a href="https://www.figma.com/design/wxGBDJZuSz9Ybv2gk3HExb/Project-ISAD-ENTRE-Prototype?node-id=0-1&t=ZWLQHT0rLAFtIUGG-" target="_blank" class="proj-link-btn">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14H9V8h2v8zm4 0h-2V8h2v8z"/></svg>
+                Open in Figma
+              </a>
+              <button class="proj-details-btn" onclick="openProjectModal('BioCycleXpert','This project promotes a profitable and eco-friendly farming system by converting substandard crops into livestock feed or organic fertilizer. It creates a market for non-standard products and provides training to improve farmers skills.',['Figma','UI/UX Design','Sustainability'],'https://www.figma.com/design/wxGBDJZuSz9Ybv2gk3HExb/Project-ISAD-ENTRE-Prototype?node-id=0-1&t=ZWLQHT0rLAFtIUGG-','assets/biocyclexpert.png')">Details</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- end proj-grid -->
+    </div><!-- end glass-section -->
+  </section>
+
+
+  <!-- Enhanced Project Modal -->
+  <div id="projectModal"
+    class="modal fixed inset-0 bg-black/60 backdrop-blur-sm flex items-center justify-center z-[9999] p-4 hidden opacity-0 transition-opacity duration-300">
+    <div
+      class="modal-content bg-white/95 backdrop-blur-md rounded-3xl p-6 md:p-8 max-w-2xl w-full max-h-[90vh] overflow-y-auto transform transition-all duration-300 scale-95 relative"
+      onclick="event.stopPropagation()">
+      <!-- Enhanced Close Button -->
+      <button
+        class="close-btn absolute top-4 right-4 w-10 h-10 bg-white/90 backdrop-blur-sm rounded-full flex items-center justify-center text-gray-400 hover:text-gray-600 hover:bg-white transition-all duration-200 shadow-lg hover:shadow-xl z-10"
+        onclick="closeProjectModal()" aria-label="Close modal">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+        </svg>
+      </button>
+
+      <!-- Modal Image Container -->
+      <div class="modal-image-container mb-6">
+        <img id="modalImage" src="" alt=""
+          class="modal-img w-full h-auto max-h-64 md:max-h-80 object-contain rounded-2xl bg-gray-50">
+      </div>
+
+      <!-- Modal Content -->
+      <div class="modal-content-inner">
+        <h3 id="modalTitle" class="modal-title text-xl md:text-2xl font-bold font-space text-gray-900 mb-4 pr-8"></h3>
+        <p id="modalDesc" class="modal-desc text-gray-600 font-inter text-sm md:text-base mb-6 leading-relaxed"></p>
+
+        <!-- Tech Stack -->
+        <div id="modalTechStack" class="tech-stack flex flex-wrap gap-2 mb-6"></div>
+
+        <!-- Action Button -->
+        <a id="modalLink" href="" target="_blank" rel="noopener noreferrer"
+          class="figma-link inline-flex items-center justify-center w-full bg-gradient-to-r from-purple-600 to-blue-600 text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 text-center">
+          <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+          </svg>
+          View Project on Figma
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- 👤 Profile Section -->
+  <section id="profile" class="section profile py-8">
+    <div class="content glass-section max-w-5xl mx-auto px-6 py-8">
+      <h2 class="text-3xl lg:text-4xl font-bold font-space text-gray-900 mb-2 text-center">Profile</h2>
+      <p class="text-sm text-gray-500 font-inter text-center mb-8">Skills, certifications &amp; achievements</p>
+
+      <!-- ── MY SKILLS ── -->
+      <div class="profile-block">
+        <div class="profile-block-header">
+          <span class="profile-block-icon" style="background:linear-gradient(135deg,#7c3aed,#4f46e5)">⚡</span>
+          <h3 class="profile-block-title">My Skills</h3>
+        </div>
+
+        <div class="skills-two-col">
+          <!-- Technical -->
+          <div class="skill-group">
+            <p class="skill-group-label">Technical</p>
+            <div class="skill-chip-row">
+              <span class="skill-chip skill-chip--purple">Figma <span class="skill-lvl">Expert</span></span>
+              <span class="skill-chip skill-chip--purple">Microsoft Office <span class="skill-lvl">Expert</span></span>
+              <span class="skill-chip skill-chip--blue">SQL <span class="skill-lvl">Intermediate</span></span>
+              <span class="skill-chip skill-chip--blue">Java <span class="skill-lvl">Intermediate</span></span>
+              <span class="skill-chip skill-chip--gray">HTML / CSS <span class="skill-lvl">Beginner</span></span>
+              <span class="skill-chip skill-chip--gray">React <span class="skill-lvl">Beginner</span></span>
+              <span class="skill-chip skill-chip--gray">Python <span class="skill-lvl">Beginner</span></span>
+            </div>
+          </div>
+          <!-- Soft Skills & Languages -->
+          <div class="skill-group">
+            <p class="skill-group-label">Soft Skills</p>
+            <div class="skill-chip-row">
+              <span class="skill-chip skill-chip--green">Problem Solving <span class="skill-lvl">Expert</span></span>
+              <span class="skill-chip skill-chip--green">Communication <span class="skill-lvl">Expert</span></span>
+              <span class="skill-chip skill-chip--green">Leadership <span class="skill-lvl">Expert</span></span>
+              <span class="skill-chip skill-chip--teal">Analytical Skills <span class="skill-lvl">Advanced</span></span>
+              <span class="skill-chip skill-chip--teal">Research <span class="skill-lvl">Advanced</span></span>
+            </div>
+            <p class="skill-group-label" style="margin-top:14px">Languages</p>
+            <div class="skill-chip-row">
+              <span class="skill-chip skill-chip--amber">Indonesian <span class="skill-lvl">Native</span></span>
+              <span class="skill-chip skill-chip--amber">English <span class="skill-lvl">Professional</span></span>
             </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- 🤝 Let's Work Together Section -->
-    <section id="contact" class="section contact-section py-12">
-      <div class="content glass-section max-w-4xl mx-auto px-6 py-8">
-        <h2 class="text-3xl lg:text-4xl font-bold font-space text-gray-900 mb-4 text-center">💼 Let's Work Together</h2>
-        <p class="text-lg font-inter text-gray-600 text-center mb-8 max-w-3xl mx-auto">
-          I'm excited to bring my skills in business analysis, UI/UX design, and
-          SAP integration to your team. Let's connect and discuss how we can
-          collaborate on innovative solutions.
-        </p>
+      <!-- ── CERTIFICATIONS ── -->
+      <div class="profile-block">
+        <div class="profile-block-header">
+          <span class="profile-block-icon" style="background:linear-gradient(135deg,#f59e0b,#d97706)">🏅</span>
+          <h3 class="profile-block-title">Certifications</h3>
+        </div>
 
-        <div class="contact-grid grid grid-cols-1 md:grid-cols-3 gap-6">
-          <!-- Email -->
-          <a href="mailto:rahmathanif.work@gmail.com" class="contact-card bg-white/90 backdrop-blur-sm rounded-xl p-6 flex items-center gap-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-decoration-none group">
-            <div class="icon w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-              <img
-                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg"
-                alt="Gmail"
-                class="w-6 h-6 filter brightness-0 invert"
-              />
-            </div>
-            <div class="text-left">
-              <h4 class="font-bold font-space text-gray-900 mb-1">Email</h4>
-              <p class="font-inter text-gray-600 text-sm">rahmathanif.work@gmail.com</p>
-            </div>
-          </a>
+        <div class="cert-cards-grid">
 
-          <!-- LinkedIn -->
-          <a
-            href="https://linkedin.com/in/rahmathanifmahasetyaputra"
-            target="_blank"
-            class="contact-card bg-white/90 backdrop-blur-sm rounded-xl p-6 flex items-center gap-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-decoration-none group"
-          >
-            <div class="icon w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-              <img
-                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg"
-                alt="LinkedIn"
-                class="w-6 h-6 filter brightness-0 invert"
-              />
+          <!-- New 1 -->
+          <div class="cert-card">
+            <div class="cert-card-bar" style="background:linear-gradient(90deg,#3b82f6,#60a5fa)"></div>
+            <div class="cert-card-body">
+              <div class="cert-issuer-row">
+                <span class="cert-issuer-badge" style="background:rgba(59,130,246,0.1);color:#1d4ed8">SAP</span>
+                <span class="cert-date-chip">Mar 2026</span>
+              </div>
+              <h4 class="cert-title">Introducing SAP ABAP Platform Fundamentals</h4>
+              <p class="cert-desc">SAP ABAP Platform Fundamentals Credential.</p>
+              <a href="https://www.credly.com/badges/a9d40017-2dc8-4def-898c-ae1fd0a33130/public_url" target="_blank" class="cert-link-btn">View Certificate ↗</a>
             </div>
-            <div class="text-left">
-              <h4 class="font-bold font-space text-gray-900 mb-1">LinkedIn</h4>
-              <p class="font-inter text-gray-600 text-sm">Rahmat Hanif Mahasetyaputra</p>
-            </div>
-          </a>
+          </div>
 
-          <!-- Resume -->
-          <a
-            href="https://drive.google.com/file/d/1NXvANkYL-zMsu3sxpt9hR-_Bcvg_3wNi/view?usp=sharing"
-            target="_blank"
-            class="contact-card bg-white/90 backdrop-blur-sm rounded-xl p-6 flex items-center gap-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-decoration-none group"
-          >
-            <div class="icon w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-              <img
-                src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/readthedocs.svg"
-                alt="Resume"
-                class="w-6 h-6 filter brightness-0 invert"
-              />
+          <!-- New 2 -->
+          <div class="cert-card">
+            <div class="cert-card-bar" style="background:linear-gradient(90deg,#3b82f6,#60a5fa)"></div>
+            <div class="cert-card-body">
+              <div class="cert-issuer-row">
+                <span class="cert-issuer-badge" style="background:rgba(59,130,246,0.1);color:#1d4ed8">SAP</span>
+                <span class="cert-date-chip">Mar 2026</span>
+              </div>
+              <h4 class="cert-title">Learning Basic ABAP Programming</h4>
+              <p class="cert-desc">Fundamentals of ABAP Programming.</p>
+              <a href="https://badger.learning.sap.com/verify/xasul-cugen-pavic-pudal-cipah" target="_blank" class="cert-link-btn">View Certificate ↗</a>
             </div>
-            <div class="text-left">
-              <h4 class="font-bold font-space text-gray-900 mb-1">Resume</h4>
-              <p class="font-inter text-gray-600 text-sm">View My CV</p>
+          </div>
+
+          <!-- 1 -->
+          <div class="cert-card">
+            <div class="cert-card-bar" style="background:linear-gradient(90deg,#f59e0b,#fbbf24)"></div>
+            <div class="cert-card-body">
+              <div class="cert-issuer-row">
+                <span class="cert-issuer-badge" style="background:rgba(245,158,11,0.1);color:#b45309">Life at FMCG</span>
+                <span class="cert-date-chip">Nov 2025</span>
+              </div>
+              <h4 class="cert-title">CCEP Indonesia Bootcamp 2025</h4>
+              <p class="cert-desc">Specialization in Supply Chain and exploring all CCEP business processes.</p>
+              <a href="https://credsverse.com/credentials/9fccd7ca-b343-45a4-8808-c0244db65a62" target="_blank" class="cert-link-btn">View Certificate ↗</a>
             </div>
-          </a>
+          </div>
+
+          <!-- 2 -->
+          <div class="cert-card">
+            <div class="cert-card-bar" style="background:linear-gradient(90deg,#ef4444,#f87171)"></div>
+            <div class="cert-card-body">
+              <div class="cert-issuer-row">
+                <span class="cert-issuer-badge" style="background:rgba(239,68,68,0.1);color:#b91c1c">Udemy</span>
+                <span class="cert-date-chip">Oct 2025</span>
+              </div>
+              <h4 class="cert-title">ISO 27001: Information Security Management</h4>
+              <p class="cert-desc">Information Security Management Systems Certified.</p>
+              <a href="https://www.udemy.com/certificate/UC-74111895-d436-4b0e-a059-b16b8a2c62be/" target="_blank" class="cert-link-btn">View Certificate ↗</a>
+            </div>
+          </div>
+
+          <!-- 3 -->
+          <div class="cert-card">
+            <div class="cert-card-bar" style="background:linear-gradient(90deg,#10b981,#34d399)"></div>
+            <div class="cert-card-body">
+              <div class="cert-issuer-row">
+                <span class="cert-issuer-badge" style="background:rgba(16,185,129,0.1);color:#047857">HackerRank</span>
+                <span class="cert-date-chip">May 2025</span>
+              </div>
+              <h4 class="cert-title">HackerRank SQL (Basic)</h4>
+              <p class="cert-desc">Problem Solving &amp; Queries.</p>
+              <a href="https://www.hackerrank.com/certificates/be43f355f25f" target="_blank" class="cert-link-btn">View Certificate ↗</a>
+            </div>
+          </div>
+
+          <!-- 4 -->
+          <div class="cert-card">
+            <div class="cert-card-bar" style="background:linear-gradient(90deg,#7c3aed,#a78bfa)"></div>
+            <div class="cert-card-body">
+              <div class="cert-issuer-row">
+                <span class="cert-issuer-badge" style="background:rgba(124,58,237,0.1);color:#6d28d9">SAP Indonesia</span>
+                <span class="cert-date-chip">Jan 2025</span>
+              </div>
+              <h4 class="cert-title">SAP Certified Associate</h4>
+              <p class="cert-desc">Business Process Integration with SAP S/4HANA.</p>
+              <a href="https://www.credly.com/badges/9df41037-93ee-4fd4-81bc-410463e1bf1a" target="_blank" class="cert-link-btn">View Certificate ↗</a>
+            </div>
+          </div>
+
+          <!-- 5 -->
+          <div class="cert-card">
+            <div class="cert-card-bar" style="background:linear-gradient(90deg,#2563eb,#60a5fa)"></div>
+            <div class="cert-card-body">
+              <div class="cert-issuer-row">
+                <span class="cert-issuer-badge" style="background:rgba(37,99,235,0.1);color:#1d4ed8">SAP Indonesia</span>
+                <span class="cert-date-chip">Aug 2024</span>
+              </div>
+              <h4 class="cert-title">SAP Fundamental Using SAP S/4HANA</h4>
+              <p class="cert-desc">Certification of Participation.</p>
+              <a href="https://drive.google.com/file/d/1s13uARGF6-OnHhywkrPabCWTaeN0bjGh/view?usp=sharing" target="_blank" class="cert-link-btn">View Certificate ↗</a>
+            </div>
+          </div>
+
+          <!-- 6 -->
+          <div class="cert-card">
+            <div class="cert-card-bar" style="background:linear-gradient(90deg,#6366f1,#a5b4fc)"></div>
+            <div class="cert-card-body">
+              <div class="cert-issuer-row">
+                <span class="cert-issuer-badge" style="background:rgba(99,102,241,0.1);color:#4338ca">AsiaWorks</span>
+                <span class="cert-date-chip">May 2024</span>
+              </div>
+              <h4 class="cert-title">Basic Training</h4>
+              <p class="cert-desc">Leadership and Personal Development Program.</p>
+              <a href="https://drive.google.com/file/d/1DbU3Ev0BQQF2P_CSPJUwkENeOTIFxiNe/view" target="_blank" class="cert-link-btn">View Certificate ↗</a>
+            </div>
+          </div>
+
         </div>
       </div>
-    </section>
 
-    <!-- ⚙️ Footer -->
-    <footer class="bg-white/80 backdrop-blur-sm border-t border-gray-200 py-6">
-      <p class="text-center font-inter text-gray-600">© 2025 Rahmat Hanif Mahasetyaputra</p>
-    </footer>
+      <!-- ── HONORS & AWARDS ── -->
+      <div class="profile-block" style="margin-bottom:0">
+        <div class="profile-block-header">
+          <span class="profile-block-icon" style="background:linear-gradient(135deg,#f59e0b,#fbbf24)">🏆</span>
+          <h3 class="profile-block-title">Honors &amp; Awards</h3>
+        </div>
 
-    <script src="script.js"></script>
-  </body>
+        <div class="award-cards-grid">
+
+          <div class="award-card">
+            <div class="award-rank">🏅 <span>Awardee</span></div>
+            <div class="award-info">
+              <h4 class="award-title">CCEP Indonesia Bootcamp Awardee</h4>
+              <p class="award-org">Life at FMCG</p>
+            </div>
+            <div class="award-meta">
+              <span class="award-scope award-scope--national">National</span>
+              <span class="award-when">Jul 2025</span>
+            </div>
+          </div>
+
+          <div class="award-card">
+            <div class="award-rank">🥇 <span>1st</span></div>
+            <div class="award-info">
+              <h4 class="award-title">Gandeng Business Case Competition</h4>
+              <p class="award-org">CCEP Indonesia Bootcamp Awardee</p>
+            </div>
+            <div class="award-meta">
+              <span class="award-scope award-scope--national">National</span>
+              <span class="award-when">May 2025</span>
+            </div>
+          </div>
+
+          <div class="award-card">
+            <div class="award-rank">🥈 <span>2nd</span></div>
+            <div class="award-info">
+              <h4 class="award-title">DIG IN HIMSISFO Business IT Case</h4>
+              <p class="award-org">Business IT Case Competition</p>
+            </div>
+            <div class="award-meta">
+              <span class="award-scope award-scope--national">National</span>
+              <span class="award-when">Feb 2025</span>
+            </div>
+          </div>
+
+          <div class="award-card">
+            <div class="award-rank">🥉 <span>3rd</span></div>
+            <div class="award-info">
+              <h4 class="award-title">SxC International Summit Business Case</h4>
+              <p class="award-org">International Business Case Competition</p>
+            </div>
+            <div class="award-meta">
+              <span class="award-scope award-scope--intl">International</span>
+              <span class="award-when">Dec 2024</span>
+            </div>
+          </div>
+
+          <div class="award-card">
+            <div class="award-rank">🎖️ <span>Top 10</span></div>
+            <div class="award-info">
+              <h4 class="award-title">Business Case Simulation BRAND UI</h4>
+              <p class="award-org">Business Case Competition</p>
+            </div>
+            <div class="award-meta">
+              <span class="award-scope award-scope--national">National</span>
+              <span class="award-when">Sep 2024</span>
+            </div>
+          </div>
+
+          <div class="award-card">
+            <div class="award-rank">🎖️ <span>Semifinal</span></div>
+            <div class="award-info">
+              <h4 class="award-title">IO FEST UI/UX Competition</h4>
+              <p class="award-org">UI/UX Design Competition</p>
+            </div>
+            <div class="award-meta">
+              <span class="award-scope award-scope--national">National</span>
+              <span class="award-when">Jun 2024</span>
+            </div>
+          </div>
+
+          <div class="award-card">
+            <div class="award-rank">🎖️ <span>Top 7</span></div>
+            <div class="award-info">
+              <h4 class="award-title">Business Case PETROLIDA SPE ITS SC</h4>
+              <p class="award-org">Business Case Competition</p>
+            </div>
+            <div class="award-meta">
+              <span class="award-scope award-scope--national">National</span>
+              <span class="award-when">May 2024</span>
+            </div>
+          </div>
+
+          <div class="award-card">
+            <div class="award-rank">🎖️ <span>Top 20</span></div>
+            <div class="award-info">
+              <h4 class="award-title">LEAP MINI CASE CHALLENGE with GOKS! LINE</h4>
+              <p class="award-org">Business Case Competition</p>
+            </div>
+            <div class="award-meta">
+              <span class="award-scope award-scope--national">National</span>
+              <span class="award-when">Jan 2024</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- 🤝 Let's Work Together Section -->
+  <section id="contact" class="section contact-section py-12">
+    <div class="content glass-section max-w-4xl mx-auto px-6 py-8">
+      <h2 class="text-3xl lg:text-4xl font-bold font-space text-gray-900 mb-4 text-center">💼 Let's Work Together</h2>
+      <p class="text-lg font-inter text-gray-600 text-center mb-8 max-w-3xl mx-auto">
+        I'm excited to bring my skills in business analysis, UI/UX design, and
+        SAP integration to your team. Let's connect and discuss how we can
+        collaborate on innovative solutions.
+      </p>
+
+      <div class="contact-grid grid grid-cols-1 md:grid-cols-3 gap-6">
+        <!-- Email -->
+        <a href="mailto:rahmathanif.work@gmail.com"
+          class="contact-card bg-white/90 backdrop-blur-sm rounded-xl p-6 flex items-center gap-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-decoration-none group">
+          <div
+            class="icon w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Gmail"
+              class="w-6 h-6 filter brightness-0 invert" />
+          </div>
+          <div class="text-left">
+            <h4 class="font-bold font-space text-gray-900 mb-1">Email</h4>
+            <p class="font-inter text-gray-600 text-sm">rahmathanif.work@gmail.com</p>
+          </div>
+        </a>
+
+        <!-- LinkedIn -->
+        <a href="https://linkedin.com/in/rahmathanifmahasetyaputra" target="_blank"
+          class="contact-card bg-white/90 backdrop-blur-sm rounded-xl p-6 flex items-center gap-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-decoration-none group">
+          <div
+            class="icon w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn"
+              class="w-6 h-6 filter brightness-0 invert" />
+          </div>
+          <div class="text-left">
+            <h4 class="font-bold font-space text-gray-900 mb-1">LinkedIn</h4>
+            <p class="font-inter text-gray-600 text-sm">Rahmat Hanif Mahasetyaputra</p>
+          </div>
+        </a>
+
+        <!-- Resume -->
+        <a href="https://drive.google.com/file/d/1kvsvDliFCLsZtY1_VX2aymeOj1FZ24IQ/view?usp=sharing" target="_blank"
+          class="contact-card bg-white/90 backdrop-blur-sm rounded-xl p-6 flex items-center gap-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-decoration-none group">
+          <div
+            class="icon w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
+            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/readthedocs.svg" alt="Resume"
+              class="w-6 h-6 filter brightness-0 invert" />
+          </div>
+          <div class="text-left">
+            <h4 class="font-bold font-space text-gray-900 mb-1">Resume</h4>
+            <p class="font-inter text-gray-600 text-sm">View My CV</p>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ⚙️ Footer -->
+  <footer class="bg-white/80 backdrop-blur-sm border-t border-gray-200 py-6">
+    <p class="text-center font-inter text-gray-600">© 2026 Rahmat Hanif Mahasetyaputra</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
 </html>
-

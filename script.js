@@ -569,6 +569,10 @@ function openProjectModal(title, description, techStack, link, image) {
   });
   
   modal.classList.remove('hidden');
+  
+  // Force a browser reflow to allow the CSS engine to prepare for the CSS transition
+  void modal.offsetWidth;
+  
   modal.classList.add('show');
   
   // Store scroll position before preventing scroll
@@ -600,8 +604,12 @@ function closeProjectModal() {
   // Get stored scroll position
   const scrollY = document.body.style.getPropertyValue('--scroll-position');
   
-  modal.classList.add('hidden');
   modal.classList.remove('show');
+  
+  // Wait for the CSS transition (0.3s) to finish before fully hiding the display
+  setTimeout(() => {
+    modal.classList.add('hidden');
+  }, 300);
   
   // Restore body scroll properly for all devices
   document.body.style.position = '';
@@ -858,11 +866,12 @@ function initMobileMenu() {
 // Header scroll effect
 function initHeaderScroll() {
   const header = document.querySelector('header');
+  const progress = document.getElementById('navProgress');
   let lastScroll = 0;
-  
+
   window.addEventListener('scroll', () => {
     const currentScroll = window.pageYOffset;
-    
+
     if (header) {
       if (currentScroll > 50) {
         header.classList.add('scrolled');
@@ -870,7 +879,14 @@ function initHeaderScroll() {
         header.classList.remove('scrolled');
       }
     }
-    
+
+    // Scroll progress bar
+    if (progress) {
+      const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = docHeight > 0 ? (currentScroll / docHeight) * 100 : 0;
+      progress.style.width = pct + '%';
+    }
+
     lastScroll = currentScroll;
   });
 }
