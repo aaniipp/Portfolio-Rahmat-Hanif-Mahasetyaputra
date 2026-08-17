@@ -36,6 +36,7 @@
             'skill-shine': 'skillShine 2s infinite',
             'modal-fade-in': 'modalFadeIn 0.3s forwards',
             'modal-slide-in': 'modalSlideIn 0.4s 0.1s forwards',
+            'border-beam': 'border-beam calc(var(--duration)*1s) infinite linear',
           },
           keyframes: {
             gradient: {
@@ -71,6 +72,11 @@
             modalSlideIn: {
               'to': { transform: 'scale(1) translateY(0)' },
             },
+            'border-beam': {
+              '100%': {
+                'offset-distance': '100%',
+              },
+            },
           }
         }
       }
@@ -80,36 +86,56 @@
 
 <body>
   <!-- 🌐 Navbar -->
-  <header class="header">
-    <nav class="navbar">
-      <!-- Logo -->
-      <a href="#home" class="logo-container" style="text-decoration:none">
-        <div class="nav-logo-avatar">RH</div>
-        <div class="logo-text">
-          <span class="logo-main">Rahmat Hanif</span>
-          <span class="logo-sub">Mahasetyaputra</span>
-        </div>
-      </a>
-
-      <!-- Nav links -->
-      <ul class="nav-links">
-        <li><a href="#home"        class="nav-link"><span class="nav-text">Home</span></a></li>
-        <li><a href="#education"   class="nav-link"><span class="nav-text">Education</span></a></li>
-        <li><a href="#experience"  class="nav-link"><span class="nav-text">Experience</span></a></li>
-        <li><a href="#portfolio"   class="nav-link"><span class="nav-text">Portfolio</span></a></li>
-        <li><a href="#profile"     class="nav-link"><span class="nav-text">Profile</span></a></li>
-      </ul>
-
-      <!-- Mobile menu toggle -->
-      <div class="mobile-menu-toggle">
-        <span class="bar"></span>
-        <span class="bar"></span>
-        <span class="bar"></span>
+  <!-- 🌐 Floating Dock Header -->
+  <nav id="floating-dock" class="fixed bottom-6 lg:bottom-10 left-1/2 -translate-x-1/2 z-[100] transition-transform duration-300">
+    <div class="relative w-max h-[58px] p-2 flex gap-2 rounded-2xl bg-white/80 backdrop-filter backdrop-blur-lg border border-purple-100 shadow-[0_8px_30px_rgba(124,58,237,0.15)] items-center pointer-events-auto">
+      
+      <!-- Left: Menu Bars -->
+      <div class="flex aspect-square cursor-pointer items-center justify-center rounded-full" style="width: 40px;">
+        <a href="#home" class="inline-flex items-center justify-center whitespace-nowrap transition-all duration-300 text-gray-500 hover:text-pink-500 hover:bg-pink-100 hover:scale-110 hover:-translate-y-1 size-10 rounded-full" title="Home">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-house"><path d="M15 21v-8a1 1 0 0 0-1-1h-4a1 1 0 0 0-1 1v8"></path><path d="M3 10a2 2 0 0 1 .709-1.528l7-5.999a2 2 0 0 1 2.582 0l7 5.999A2 2 0 0 1 21 10v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path></svg>
+        </a>
       </div>
-    </nav>
-    <!-- Scroll progress bar -->
-    <div id="navProgress" style="position:absolute;bottom:0;left:0;height:2px;width:0%;background:linear-gradient(90deg,#7c3aed,#4f46e5);transition:width 0.1s linear"></div>
-  </header>
+      <div class="flex aspect-square cursor-pointer items-center justify-center rounded-full" style="width: 40px;">
+        <a href="#education" class="inline-flex items-center justify-center whitespace-nowrap transition-all duration-300 text-gray-500 hover:text-blue-500 hover:bg-blue-100 hover:scale-110 hover:-translate-y-1 size-10 rounded-full" title="Education">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap"><path d="M21.42 10.922a1 1 0 0 0-.019-1.838L12.83 5.18a2 2 0 0 0-1.66 0L2.6 9.08a1 1 0 0 0 0 1.832l8.57 3.908a2 2 0 0 0 1.66 0z"></path><path d="M22 10v6"></path><path d="M6 12.5V16a6 3 0 0 0 12 0v-3.5"></path></svg>
+        </a>
+      </div>
+      <div class="flex aspect-square cursor-pointer items-center justify-center rounded-full" style="width: 40px;">
+        <a href="#experience" class="inline-flex items-center justify-center whitespace-nowrap transition-all duration-300 text-gray-500 hover:text-purple-500 hover:bg-purple-100 hover:scale-110 hover:-translate-y-1 size-10 rounded-full" title="Experience">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-book"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H19a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1H6.5a1 1 0 0 1 0-5H20"></path></svg>
+        </a>
+      </div>
+      <div class="flex aspect-square cursor-pointer items-center justify-center rounded-full" style="width: 40px;">
+        <a href="#portfolio" class="inline-flex items-center justify-center whitespace-nowrap transition-all duration-300 text-gray-500 hover:text-emerald-500 hover:bg-emerald-100 hover:scale-110 hover:-translate-y-1 size-10 rounded-full" title="Portfolio">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-briefcase"><rect width="20" height="14" x="2" y="7" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+        </a>
+      </div>
+
+      <!-- SEPARATOR -->
+      <div data-orientation="vertical" role="none" class="shrink-0 bg-gray-200 w-[1px] h-full hidden md:flex mx-1"></div>
+
+      <!-- Right: Socials (Email, LinkedIn, Resume) -->
+      <div class="aspect-square cursor-pointer items-center justify-center rounded-full hidden md:flex" style="width: 40px;">
+        <a href="mailto:rahmathanif.work@gmail.com" class="inline-flex items-center justify-center whitespace-nowrap transition-all duration-300 text-gray-500 hover:text-orange-500 hover:bg-orange-100 hover:scale-110 hover:-translate-y-1 size-10 rounded-full" target="_blank" title="Email">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+        </a>
+      </div>
+      <div class="aspect-square cursor-pointer items-center justify-center rounded-full hidden md:flex" style="width: 40px;">
+        <a href="https://linkedin.com/in/rahmathanifmahasetyaputra" class="inline-flex items-center justify-center whitespace-nowrap transition-all duration-300 text-gray-500 hover:text-cyan-500 hover:bg-cyan-100 hover:scale-110 hover:-translate-y-1 size-10 rounded-full" target="_blank" title="LinkedIn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+        </a>
+      </div>
+      <div class="aspect-square cursor-pointer items-center justify-center rounded-full hidden md:flex" style="width: 40px;">
+        <a href="https://drive.google.com/file/d/1kvsvDliFCLsZtY1_VX2aymeOj1FZ24IQ/view?usp=sharing" class="inline-flex items-center justify-center whitespace-nowrap transition-all duration-300 text-gray-500 hover:text-rose-500 hover:bg-rose-100 hover:scale-110 hover:-translate-y-1 size-10 rounded-full" target="_blank" title="Resume">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+        </a>
+      </div>
+
+      <!-- Animated Beam -->
+      <div style="--size:100;--duration:10;--anchor:90;--border-width:1.5;--color-from:#c084fc;--color-to:#3556c6;--delay:-10s" class="pointer-events-none absolute inset-0 rounded-[inherit] [border:calc(var(--border-width)*1px)_solid_transparent] ![mask-clip:padding-box,border-box] ![mask-composite:intersect] [mask:linear-gradient(transparent,transparent),linear-gradient(white,white)] after:absolute after:aspect-square after:w-[calc(var(--size)*1px)] after:animate-border-beam after:[animation-delay:var(--delay)] after:[background:linear-gradient(to_left,var(--color-from),var(--color-to),transparent)] after:[offset-anchor:calc(var(--anchor)*1%)_50%] after:[offset-path:rect(0_auto_auto_0_round_calc(var(--size)*1px))]"></div>
+    </div>
+  </nav>
 
   <!-- 🏠 Home Section -->
   <section id="home" class="section home min-h-screen flex items-center justify-center relative overflow-hidden">
@@ -128,7 +154,7 @@
         </div>
 
         <!-- Name -->
-        <h1 class="text-5xl lg:text-6xl font-bold font-space text-gray-900 leading-[1.08] animate-slide-up" style="animation-delay: 0.15s">
+        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-bold font-space text-gray-900 leading-[1.08] animate-slide-up break-words sm:break-normal" style="animation-delay: 0.15s">
           Rahmat Hanif<br/>
           <span class="text-transparent bg-clip-text bg-gradient-to-r from-violet-600 via-indigo-500 to-blue-500">Mahasetyaputra</span>
         </h1>
@@ -143,9 +169,7 @@
 
         <!-- Description -->
         <p class="text-base lg:text-lg font-inter text-gray-600 leading-relaxed max-w-xl animate-slide-up" style="animation-delay: 0.35s">
-          Business Analyst &amp; SAP Consultant passionate about bridging technology
-          and business. Currently at Abeam Consulting while completing my Bachelor's
-          at BINUS University.
+          Fresh Graduate in Information Systems with experience in IT Consulting, SAP, and Business Analysis. Proven ability to support SAP and technology consulting projects, translate business requirements into actionable solutions, and collaborate with cross-functional teams to drive business and technology transformation.
         </p>
 
         <!-- Quick stats -->
@@ -215,8 +239,13 @@
   <!-- 🎓 Education Section -->
   <section id="education" class="section py-8">
     <div class="content glass-section max-w-4xl mx-auto px-6 py-8">
-      <h2 class="text-3xl lg:text-4xl font-bold font-space text-gray-900 mb-2 text-center">Education</h2>
-      <p class="text-sm text-gray-500 font-inter text-center mb-8">Academic background &amp; achievements</p>
+      <div class="flex flex-col items-center text-center mb-12 sm:mb-16">
+        <div class="px-4 py-1.5 rounded-full mb-5" style="background: rgba(79, 70, 229, 0.08); border: 1px solid rgba(79, 70, 229, 0.2); backdrop-filter: blur(12px);">
+          <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-indigo-600">Education</span>
+        </div>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900">Education</h2>
+        <p class="text-base sm:text-lg max-w-2xl text-gray-500">Academic background and certifications.</p>
+      </div>
 
       <div class="exp-list">
 
@@ -227,7 +256,7 @@
             <div class="exp-header">
               <div class="exp-avatar" style="background:linear-gradient(135deg,#2563eb,#0ea5e9);font-size:0.75rem">BU</div>
               <div class="exp-title-group">
-                <h3 class="exp-role">Bachelor of Information Systems</h3>
+                <h3 class="exp-role">Bachelor's Degree, Information Systems</h3>
                 <span class="exp-company">Binus University</span>
               </div>
               <span class="exp-date-badge">Aug 2022 – Jun 2026</span>
@@ -238,9 +267,8 @@
               <span class="exp-tag exp-tag--purple" style="background:rgba(79,70,229,0.08);color:#4338ca;border-color:rgba(79,70,229,0.15)">GPA 3.69 / 4.00</span>
             </div>
             <ul class="exp-bullets">
-              <li>Relevant coursework: ERP &amp; SAP S/4HANA, UI/UX Design, Business Analysis, System Analysis, Quality Assurance, Object-Oriented Programming.</li>
-              <li>Active member of the Information Systems Laboratory and Case Study Club.</li>
-              <li>Expected graduation: June 2026.</li>
+              <li>Thesis: Analyzing the Effect of Gamification and User Experience (UX) on Ease of Use and Loyalty of Gen Z Consumers on E-Commerce Platforms</li>
+              <li>Relevant Coursework: ERP (SAP), UI UX Design, Business Analyst, System Analyst, Quality Assurance.</li>
             </ul>
           </div>
         </div>
@@ -252,141 +280,180 @@
   </section>
 
   <!-- 💼 Experience Section -->
-  <section id="experience" class="section py-8">
-    <div class="content glass-section max-w-4xl mx-auto px-6 py-8">
-      <h2 class="text-3xl lg:text-4xl font-bold font-space text-gray-900 mb-2 text-center">Experience</h2>
-      <p class="text-sm text-gray-500 font-inter text-center mb-8">Professional journey &amp; roles</p>
-
-      <div class="exp-list">
-
-        <!-- Abeam Consulting -->
-        <div class="exp-card timeline-item">
-          <div class="exp-dot"></div>
-          <div class="exp-body">
-            <div class="exp-header">
-              <div class="exp-avatar" style="background: linear-gradient(135deg,#7c3aed,#4f46e5)">AC</div>
-              <div class="exp-title-group">
-                <h3 class="exp-role">SAP Consultant</h3>
-                <span class="exp-company">Abeam Consulting</span>
-              </div>
-              <span class="exp-date-badge">Mar 2026 – Present</span>
-            </div>
-            <div class="exp-meta-row">
-              <span class="exp-location">📍 Jakarta, Indonesia</span>
-              <span class="exp-tag exp-tag--purple">SAP Consulting</span>
-            </div>
-            <ul class="exp-bullets">
-              <li>Engaged in end-to-end SAP implementation and consulting projects, delivering business process optimization for enterprise clients.</li>
-              <li>Collaborated with cross-functional teams to design and configure SAP S/4HANA solutions aligned with client business requirements.</li>
-              <li>Supported functional design, system testing, and user training to ensure seamless go-live and adoption.</li>
-            </ul>
-          </div>
+  <section id="experience" class="section py-8 relative overflow-hidden" style="--au-primary: #4f46e5; --au-secondary: #7c3aed; --au-text: #111827;">
+    <div class="content glass-section max-w-5xl mx-auto px-6 py-10 lg:py-14">
+      <div class="flex flex-col items-center text-center mb-14 sm:mb-20 au-reveal is-visible">
+        <div class="px-4 py-1.5 rounded-full mb-5" style="background: rgba(79, 70, 229, 0.08); border: 1px solid rgba(79, 70, 229, 0.2); backdrop-filter: blur(12px);">
+          <span class="text-[10px] font-bold uppercase tracking-[0.3em]" style="color: var(--au-primary);">Experience</span>
         </div>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4" style="color: var(--au-text);"><span>Experience</span></h2>
+        <p class="text-base sm:text-lg max-w-2xl text-gray-500"><span>A timeline of professional roles and contributions.</span></p>
+      </div>
 
-        <!-- PT. Phincon -->
-        <div class="exp-card timeline-item">
-          <div class="exp-dot"></div>
-          <div class="exp-body">
-            <div class="exp-header">
-              <div class="exp-avatar" style="background: linear-gradient(135deg,#0ea5e9,#2563eb)">PH</div>
-              <div class="exp-title-group">
-                <h3 class="exp-role">Business Analyst Intern</h3>
-                <span class="exp-company">PT. Phincon</span>
+      <div class="relative">
+        <div class="absolute left-3 sm:left-1/2 top-0 bottom-0 w-px sm:-translate-x-1/2" style="background: linear-gradient(to bottom, transparent, var(--au-primary), var(--au-secondary), transparent); opacity: 0.4;"></div>
+        
+        <div class="space-y-10 sm:space-y-16">
+          
+          <!-- Item 1: Abeam Consulting -->
+          <div class="relative au-reveal flex flex-col sm:flex-row items-start gap-6 min-w-0 is-visible" style="animation-delay: 0ms;">
+            <div class="absolute left-3 sm:left-1/2 top-7 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full sm:-translate-x-1/2 z-10" style="background: var(--au-primary); box-shadow: 0 0 0 4px #f8f7ff, 0 0 16px var(--au-primary);"></div>
+            <div class="w-full min-w-0 sm:w-[calc(50%-2rem)] pl-9 sm:pl-0 sm:ml-0 sm:mr-auto sm:pr-8">
+              <div class="group relative p-5 sm:p-7 min-w-0 bg-white/80 border border-gray-200 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div class="flex items-start justify-between gap-3 mb-4">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(79, 70, 229, 0.08); border: 1px solid rgba(79, 70, 229, 0.15); color: var(--au-primary);">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect width="20" height="14" x="2" y="6" rx="2"></rect></svg>
+                    </div>
+                    <h3 class="text-lg font-bold leading-tight" style="color: var(--au-text);">SAP ABAP Consultant Intern</h3>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 mb-3 text-sm">
+                  <span class="font-semibold inline-flex items-center gap-1.5" style="color: var(--au-primary);">Abeam Consulting Indonesia</span>
+                  <span style="color: rgba(17, 24, 39, 0.3);">·</span>
+                  <span class="text-xs font-medium" style="color: rgba(17, 24, 39, 0.5);">Mar 2026 – Present</span>
+                </div>
+                <div class="text-sm leading-relaxed break-words text-gray-600" style="overflow-wrap: anywhere;">
+                  <ul class="list-disc pl-4 space-y-1">
+                    <li>Engaged in end-to-end SAP implementation and consulting projects, delivering business process optimization for enterprise clients.</li>
+                    <li>Collaborated with cross-functional teams to design and configure SAP S/4HANA solutions aligned with client business requirements.</li>
+                    <li>Supported functional design, system testing, and user training to ensure seamless go-live and adoption.</li>
+                  </ul>
+                </div>
               </div>
-              <span class="exp-date-badge">Feb 2025 – Feb 2026</span>
             </div>
-            <div class="exp-meta-row">
-              <span class="exp-location">📍 Jakarta, Indonesia</span>
-              <span class="exp-tag exp-tag--blue">Business Analysis</span>
-            </div>
-            <ul class="exp-bullets">
-              <li>Led end-to-end System Integration Testing (SIT) and User Acceptance Testing (UAT) for 3 clients, designing test cases and executing 3,000+ scenarios.</li>
-              <li>Collaborated cross-functionally with QA, developers, and PMs to analyze and resolve system defects.</li>
-              <li>Compiled structured testing documentation improving audits and decision-making.</li>
-            </ul>
           </div>
-        </div>
 
-        <!-- PT. Cipta Integrasi Nusantara -->
-        <div class="exp-card timeline-item">
-          <div class="exp-dot"></div>
-          <div class="exp-body">
-            <div class="exp-header">
-              <div class="exp-avatar" style="background: linear-gradient(135deg,#ec4899,#f43f5e)">CI</div>
-              <div class="exp-title-group">
-                <h3 class="exp-role">UI/UX Designer Intern</h3>
-                <span class="exp-company">Cipta Integrasi Nusantara</span>
+          <!-- Item 2: PT Phincon -->
+          <div class="relative au-reveal flex flex-col sm:flex-row sm:flex-row-reverse items-start gap-6 min-w-0 is-visible" style="animation-delay: 80ms;">
+            <div class="absolute left-3 sm:left-1/2 top-7 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full sm:-translate-x-1/2 z-10" style="background: var(--au-primary); box-shadow: 0 0 0 4px #f8f7ff, 0 0 16px var(--au-primary);"></div>
+            <div class="w-full min-w-0 sm:w-[calc(50%-2rem)] pl-9 sm:pl-0 sm:ml-0 sm:ml-auto sm:pl-8">
+              <div class="group relative p-5 sm:p-7 min-w-0 bg-white/80 border border-gray-200 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div class="flex items-start justify-between gap-3 mb-4">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(79, 70, 229, 0.08); border: 1px solid rgba(79, 70, 229, 0.15); color: var(--au-primary);">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect width="20" height="14" x="2" y="6" rx="2"></rect></svg>
+                    </div>
+                    <h3 class="text-lg font-bold leading-tight" style="color: var(--au-text);">Business Analyst Intern</h3>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 mb-3 text-sm">
+                  <span class="font-semibold inline-flex items-center gap-1.5" style="color: var(--au-primary);">PT. Phincon</span>
+                  <span style="color: rgba(17, 24, 39, 0.3);">·</span>
+                  <span class="text-xs font-medium" style="color: rgba(17, 24, 39, 0.5);">Feb 2025 – Feb 2026</span>
+                </div>
+                <div class="text-sm leading-relaxed break-words text-gray-600" style="overflow-wrap: anywhere;">
+                  <ul class="list-disc pl-4 space-y-1">
+                    <li>Led end-to-end System Integration Testing (SIT) and User Acceptance Testing (UAT) for 3 clients, designing test cases and executing 3,000+ scenarios.</li>
+                    <li>Collaborated cross-functionally with QA, developers, and PMs to analyze and resolve system defects.</li>
+                    <li>Compiled structured testing documentation improving audits and decision-making.</li>
+                  </ul>
+                </div>
               </div>
-              <span class="exp-date-badge">Jul 2024 – Oct 2024</span>
             </div>
-            <div class="exp-meta-row">
-              <span class="exp-location">📍 Yogyakarta, Indonesia</span>
-              <span class="exp-tag exp-tag--pink">UI/UX Design</span>
-            </div>
-            <ul class="exp-bullets">
-              <li>Conducted user research, competitor analysis, and market trend studies to define user needs.</li>
-              <li>Designed functional layouts and intuitive UI concepts aligned with research findings.</li>
-              <li>Collaborated with cross-functional teams to implement user-centered features.</li>
-            </ul>
           </div>
-        </div>
 
-        <!-- Laboratory Assistant -->
-        <div class="exp-card timeline-item">
-          <div class="exp-dot"></div>
-          <div class="exp-body">
-            <div class="exp-header">
-              <div class="exp-avatar" style="background: linear-gradient(135deg,#10b981,#059669)">BU</div>
-              <div class="exp-title-group">
-                <h3 class="exp-role">IS Laboratory Assistant</h3>
-                <span class="exp-company">BINUS University</span>
+          <!-- Item 3: CIN -->
+          <div class="relative au-reveal flex flex-col sm:flex-row items-start gap-6 min-w-0 is-visible" style="animation-delay: 160ms;">
+            <div class="absolute left-3 sm:left-1/2 top-7 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full sm:-translate-x-1/2 z-10" style="background: var(--au-primary); box-shadow: 0 0 0 4px #f8f7ff, 0 0 16px var(--au-primary);"></div>
+            <div class="w-full min-w-0 sm:w-[calc(50%-2rem)] pl-9 sm:pl-0 sm:ml-0 sm:mr-auto sm:pr-8">
+              <div class="group relative p-5 sm:p-7 min-w-0 bg-white/80 border border-gray-200 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div class="flex items-start justify-between gap-3 mb-4">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(79, 70, 229, 0.08); border: 1px solid rgba(79, 70, 229, 0.15); color: var(--au-primary);">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect width="20" height="14" x="2" y="6" rx="2"></rect></svg>
+                    </div>
+                    <h3 class="text-lg font-bold leading-tight" style="color: var(--au-text);">UI/UX Designer Intern</h3>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 mb-3 text-sm">
+                  <span class="font-semibold inline-flex items-center gap-1.5" style="color: var(--au-primary);">PT. Cipta Integrasi Nusantara</span>
+                  <span style="color: rgba(17, 24, 39, 0.3);">·</span>
+                  <span class="text-xs font-medium" style="color: rgba(17, 24, 39, 0.5);">Jul 2024 – Oct 2024</span>
+                </div>
+                <div class="text-sm leading-relaxed break-words text-gray-600" style="overflow-wrap: anywhere;">
+                  <ul class="list-disc pl-4 space-y-1">
+                    <li>Conducted user research, competitor analysis, and market trend studies to define user needs.</li>
+                    <li>Designed functional layouts and intuitive UI concepts aligned with research findings.</li>
+                    <li>Collaborated with cross-functional teams to implement user-centered features.</li>
+                  </ul>
+                </div>
               </div>
-              <span class="exp-date-badge">Nov 2023 – Jan 2025</span>
             </div>
-            <div class="exp-meta-row">
-              <span class="exp-location">📍 Jakarta, Indonesia</span>
-              <span class="exp-tag exp-tag--green">Teaching</span>
-            </div>
-            <ul class="exp-bullets">
-              <li>Instructed and mentored 100+ students in UX Research &amp; Design courses across 5 classes.</li>
-              <li>Conducted grading and feedback sessions.</li>
-              <li>Participated in weekly teaching methodology training.</li>
-            </ul>
           </div>
-        </div>
 
-        <!-- Case Study Club -->
-        <div class="exp-card timeline-item">
-          <div class="exp-dot"></div>
-          <div class="exp-body">
-            <div class="exp-header">
-              <div class="exp-avatar" style="background: linear-gradient(135deg,#f59e0b,#d97706)">CS</div>
-              <div class="exp-title-group">
-                <h3 class="exp-role">Case Study Club Member</h3>
-                <span class="exp-company">BINUS University</span>
+          <!-- Item 4: Lab Assistant -->
+          <div class="relative au-reveal flex flex-col sm:flex-row sm:flex-row-reverse items-start gap-6 min-w-0 is-visible" style="animation-delay: 240ms;">
+            <div class="absolute left-3 sm:left-1/2 top-7 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full sm:-translate-x-1/2 z-10" style="background: var(--au-primary); box-shadow: 0 0 0 4px #f8f7ff, 0 0 16px var(--au-primary);"></div>
+            <div class="w-full min-w-0 sm:w-[calc(50%-2rem)] pl-9 sm:pl-0 sm:ml-0 sm:ml-auto sm:pl-8">
+              <div class="group relative p-5 sm:p-7 min-w-0 bg-white/80 border border-gray-200 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div class="flex items-start justify-between gap-3 mb-4">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(79, 70, 229, 0.08); border: 1px solid rgba(79, 70, 229, 0.15); color: var(--au-primary);">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect width="20" height="14" x="2" y="6" rx="2"></rect></svg>
+                    </div>
+                    <h3 class="text-lg font-bold leading-tight" style="color: var(--au-text);">IS Laboratory Assistant</h3>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 mb-3 text-sm">
+                  <span class="font-semibold inline-flex items-center gap-1.5" style="color: var(--au-primary);">BINUS University</span>
+                  <span style="color: rgba(17, 24, 39, 0.3);">·</span>
+                  <span class="text-xs font-medium" style="color: rgba(17, 24, 39, 0.5);">Nov 2023 – Jan 2025</span>
+                </div>
+                <div class="text-sm leading-relaxed break-words text-gray-600" style="overflow-wrap: anywhere;">
+                  <ul class="list-disc pl-4 space-y-1">
+                    <li>Instructed and mentored 100+ students in UX Research &amp; Design courses across 5 classes.</li>
+                    <li>Conducted grading and feedback sessions.</li>
+                    <li>Participated in weekly teaching methodology training.</li>
+                  </ul>
+                </div>
               </div>
-              <span class="exp-date-badge">Nov 2023 – Jan 2025</span>
             </div>
-            <div class="exp-meta-row">
-              <span class="exp-location">📍 Jakarta, Indonesia</span>
-              <span class="exp-tag exp-tag--amber">Strategy</span>
-            </div>
-            <ul class="exp-bullets">
-              <li>Trained in problem-solving and business case strategy.</li>
-              <li>Enhanced UI/UX expertise through hands-on projects and competitions.</li>
-            </ul>
           </div>
-        </div>
 
-      </div><!-- end exp-list -->
-    </div><!-- end glass-section -->
+          <!-- Item 5: Case Study Club -->
+          <div class="relative au-reveal flex flex-col sm:flex-row items-start gap-6 min-w-0 is-visible" style="animation-delay: 320ms;">
+            <div class="absolute left-3 sm:left-1/2 top-7 w-3 h-3 sm:w-3.5 sm:h-3.5 rounded-full sm:-translate-x-1/2 z-10" style="background: var(--au-primary); box-shadow: 0 0 0 4px #f8f7ff, 0 0 16px var(--au-primary);"></div>
+            <div class="w-full min-w-0 sm:w-[calc(50%-2rem)] pl-9 sm:pl-0 sm:ml-0 sm:mr-auto sm:pr-8">
+              <div class="group relative p-5 sm:p-7 min-w-0 bg-white/80 border border-gray-200 shadow-md hover:shadow-xl hover:-translate-y-1 transition-all duration-300">
+                <div class="flex items-start justify-between gap-3 mb-4">
+                  <div class="flex items-center gap-3 min-w-0">
+                    <div class="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0" style="background: rgba(79, 70, 229, 0.08); border: 1px solid rgba(79, 70, 229, 0.15); color: var(--au-primary);">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 20V4a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path><rect width="20" height="14" x="2" y="6" rx="2"></rect></svg>
+                    </div>
+                    <h3 class="text-lg font-bold leading-tight" style="color: var(--au-text);">Case Study Club Member</h3>
+                  </div>
+                </div>
+                <div class="flex items-center gap-2 mb-3 text-sm">
+                  <span class="font-semibold inline-flex items-center gap-1.5" style="color: var(--au-primary);">BINUS University</span>
+                  <span style="color: rgba(17, 24, 39, 0.3);">·</span>
+                  <span class="text-xs font-medium" style="color: rgba(17, 24, 39, 0.5);">Nov 2023 – Jan 2025</span>
+                </div>
+                <div class="text-sm leading-relaxed break-words text-gray-600" style="overflow-wrap: anywhere;">
+                  <ul class="list-disc pl-4 space-y-1">
+                    <li>Trained in problem-solving and business case strategy.</li>
+                    <li>Enhanced UI/UX expertise through hands-on projects and competitions.</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </section>
 
   <!-- 🧩 My Projects Section -->
   <section id="portfolio" class="section py-10">
     <div class="content glass-section max-w-6xl mx-auto px-6 py-8">
-      <h2 class="text-3xl lg:text-4xl font-bold font-space text-gray-900 mb-2 text-center">My Projects</h2>
-      <p class="text-sm text-gray-500 font-inter text-center mb-8">Design, development &amp; creative work</p>
+      <div class="flex flex-col items-center text-center mb-12 sm:mb-16">
+        <div class="px-4 py-1.5 rounded-full mb-5" style="background: rgba(79, 70, 229, 0.08); border: 1px solid rgba(79, 70, 229, 0.2); backdrop-filter: blur(12px);">
+          <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-indigo-600">Portfolio</span>
+        </div>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900">My Projects</h2>
+        <p class="text-base sm:text-lg max-w-2xl text-gray-500">A selection of my recent work.</p>
+      </div>
 
       <div class="proj-grid">
 
@@ -602,8 +669,13 @@
   <!-- 👤 Profile Section -->
   <section id="profile" class="section profile py-8">
     <div class="content glass-section max-w-5xl mx-auto px-6 py-8">
-      <h2 class="text-3xl lg:text-4xl font-bold font-space text-gray-900 mb-2 text-center">Profile</h2>
-      <p class="text-sm text-gray-500 font-inter text-center mb-8">Skills, certifications &amp; achievements</p>
+      <div class="flex flex-col items-center text-center mb-12 sm:mb-16">
+        <div class="px-4 py-1.5 rounded-full mb-5" style="background: rgba(79, 70, 229, 0.08); border: 1px solid rgba(79, 70, 229, 0.2); backdrop-filter: blur(12px);">
+          <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-indigo-600">Profile</span>
+        </div>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900">My Profile</h2>
+        <p class="text-base sm:text-lg max-w-2xl text-gray-500">Skills, certifications &amp; achievements.</p>
+      </div>
 
       <!-- ── MY SKILLS ── -->
       <div class="profile-block">
@@ -621,6 +693,7 @@
               <span class="skill-chip skill-chip--purple">Microsoft Office <span class="skill-lvl">Expert</span></span>
               <span class="skill-chip skill-chip--blue">SQL <span class="skill-lvl">Intermediate</span></span>
               <span class="skill-chip skill-chip--blue">Java <span class="skill-lvl">Intermediate</span></span>
+              <span class="skill-chip skill-chip--gray">SAP ABAP <span class="skill-lvl">Beginner</span></span>
               <span class="skill-chip skill-chip--gray">HTML / CSS <span class="skill-lvl">Beginner</span></span>
               <span class="skill-chip skill-chip--gray">React <span class="skill-lvl">Beginner</span></span>
               <span class="skill-chip skill-chip--gray">Python <span class="skill-lvl">Beginner</span></span>
@@ -633,8 +706,8 @@
               <span class="skill-chip skill-chip--green">Problem Solving <span class="skill-lvl">Expert</span></span>
               <span class="skill-chip skill-chip--green">Communication <span class="skill-lvl">Expert</span></span>
               <span class="skill-chip skill-chip--green">Leadership <span class="skill-lvl">Expert</span></span>
-              <span class="skill-chip skill-chip--teal">Analytical Skills <span class="skill-lvl">Advanced</span></span>
-              <span class="skill-chip skill-chip--teal">Research <span class="skill-lvl">Advanced</span></span>
+              <span class="skill-chip skill-chip--gray">Analytical Skills <span class="skill-lvl">Beginner</span></span>
+              <span class="skill-chip skill-chip--gray">Research <span class="skill-lvl">Beginner</span></span>
             </div>
             <p class="skill-group-label" style="margin-top:14px">Languages</p>
             <div class="skill-chip-row">
@@ -881,65 +954,95 @@
   </section>
 
 
-  <!-- 🤝 Let's Work Together Section -->
-  <section id="contact" class="section contact-section py-12">
-    <div class="content glass-section max-w-4xl mx-auto px-6 py-8">
-      <h2 class="text-3xl lg:text-4xl font-bold font-space text-gray-900 mb-4 text-center">💼 Let's Work Together</h2>
-      <p class="text-lg font-inter text-gray-600 text-center mb-8 max-w-3xl mx-auto">
-        I'm excited to bring my skills in business analysis, UI/UX design, and
-        SAP integration to your team. Let's connect and discuss how we can
-        collaborate on innovative solutions.
-      </p>
+  <!-- 🤝 Get In Touch Section -->
+  <section id="contact" class="section py-16 relative overflow-hidden">
+    <div class="max-w-5xl mx-auto px-4 sm:px-6">
+      <div class="flex flex-col items-center text-center mb-12 sm:mb-16">
+        <div class="px-4 py-1.5 rounded-full mb-5" style="background: rgba(79, 70, 229, 0.08); border: 1px solid rgba(79, 70, 229, 0.2); backdrop-filter: blur(12px);">
+          <span class="text-[10px] font-bold uppercase tracking-[0.3em] text-indigo-600">Contact</span>
+        </div>
+        <h2 class="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight mb-4 text-gray-900">Get In Touch</h2>
+        <p class="text-base sm:text-lg max-w-3xl text-gray-500">I'm eager to bring my expertise in business analysis and SAP integration to your team. Let's connect and explore how we can build innovative solutions together.</p>
+      </div>
 
-      <div class="contact-grid grid grid-cols-1 md:grid-cols-3 gap-6">
-        <!-- Email -->
-        <a href="mailto:rahmathanif.work@gmail.com"
-          class="contact-card bg-white/90 backdrop-blur-sm rounded-xl p-6 flex items-center gap-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-decoration-none group">
-          <div
-            class="icon w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/gmail.svg" alt="Gmail"
-              class="w-6 h-6 filter brightness-0 invert" />
-          </div>
-          <div class="text-left">
-            <h4 class="font-bold font-space text-gray-900 mb-1">Email</h4>
-            <p class="font-inter text-gray-600 text-sm">rahmathanif.work@gmail.com</p>
-          </div>
-        </a>
+      <div class="grid lg:grid-cols-5 gap-6 lg:gap-8">
+        <!-- Left: Connect (Email, LinkedIn, CV) -->
+        <div class="lg:col-span-2">
+          <div class="bg-white/80 border border-purple-100 rounded-2xl p-6 sm:p-8 lg:p-10 h-full shadow-[0_8px_30px_rgba(124,58,237,0.1)] backdrop-blur-md">
+            <h3 class="text-xl font-bold mb-2 text-gray-900">Let's Connect</h3>
+            <p class="text-sm text-gray-500 mb-8">Available for new opportunities and collaborations.</p>
 
-        <!-- LinkedIn -->
-        <a href="https://linkedin.com/in/rahmathanifmahasetyaputra" target="_blank"
-          class="contact-card bg-white/90 backdrop-blur-sm rounded-xl p-6 flex items-center gap-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-decoration-none group">
-          <div
-            class="icon w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/linkedin.svg" alt="LinkedIn"
-              class="w-6 h-6 filter brightness-0 invert" />
-          </div>
-          <div class="text-left">
-            <h4 class="font-bold font-space text-gray-900 mb-1">LinkedIn</h4>
-            <p class="font-inter text-gray-600 text-sm">Rahmat Hanif Mahasetyaputra</p>
-          </div>
-        </a>
+            <div class="space-y-6">
+              <!-- Email -->
+              <a href="mailto:rahmathanif.work@gmail.com" class="flex items-start gap-4 group">
+                <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 bg-indigo-50 border border-indigo-100 text-indigo-600 group-hover:bg-indigo-100 group-hover:scale-110 transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-mail"><rect width="20" height="16" x="2" y="4" rx="2"></rect><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path></svg>
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold uppercase tracking-[0.2em] mb-1 text-gray-400">Email</div>
+                  <div class="text-sm font-semibold text-gray-800 group-hover:text-indigo-600 transition-colors">rahmathanif.work@gmail.com</div>
+                </div>
+              </a>
 
-        <!-- Resume -->
-        <a href="https://drive.google.com/file/d/1kvsvDliFCLsZtY1_VX2aymeOj1FZ24IQ/view?usp=sharing" target="_blank"
-          class="contact-card bg-white/90 backdrop-blur-sm rounded-xl p-6 flex items-center gap-4 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-2 text-decoration-none group">
-          <div
-            class="icon w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center group-hover:scale-110 transition-transform">
-            <img src="https://cdn.jsdelivr.net/gh/simple-icons/simple-icons/icons/readthedocs.svg" alt="Resume"
-              class="w-6 h-6 filter brightness-0 invert" />
+              <!-- LinkedIn -->
+              <a href="https://linkedin.com/in/rahmathanifmahasetyaputra" target="_blank" class="flex items-start gap-4 group">
+                <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 bg-indigo-50 border border-indigo-100 text-indigo-600 group-hover:bg-indigo-100 group-hover:scale-110 transition-all">
+                  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="18" height="18"><path fill="currentColor" d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold uppercase tracking-[0.2em] mb-1 text-gray-400">LinkedIn</div>
+                  <div class="text-sm font-semibold text-gray-800 group-hover:text-indigo-600 transition-colors">Rahmat Hanif Mahasetyaputra</div>
+                </div>
+              </a>
+
+              <!-- CV / Resume -->
+              <a href="https://drive.google.com/file/d/1kvsvDliFCLsZtY1_VX2aymeOj1FZ24IQ/view?usp=sharing" target="_blank" class="flex items-start gap-4 group">
+                <div class="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0 bg-indigo-50 border border-indigo-100 text-indigo-600 group-hover:bg-indigo-100 group-hover:scale-110 transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-file-text"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"></path><path d="M14 2v4a2 2 0 0 0 2 2h4"></path><path d="M10 9H8"></path><path d="M16 13H8"></path><path d="M16 17H8"></path></svg>
+                </div>
+                <div>
+                  <div class="text-[10px] font-bold uppercase tracking-[0.2em] mb-1 text-gray-400">Resume / CV</div>
+                  <div class="text-sm font-semibold text-gray-800 group-hover:text-indigo-600 transition-colors">View and Download</div>
+                </div>
+              </a>
+            </div>
           </div>
-          <div class="text-left">
-            <h4 class="font-bold font-space text-gray-900 mb-1">Resume</h4>
-            <p class="font-inter text-gray-600 text-sm">View My CV</p>
-          </div>
-        </a>
+        </div>
+
+        <!-- Right: Form -->
+        <div class="lg:col-span-3">
+          <form action="mailto:rahmathanif.work@gmail.com" method="post" enctype="text/plain" class="bg-white/80 border border-purple-100 rounded-2xl p-6 sm:p-8 lg:p-10 space-y-6 shadow-[0_8px_30px_rgba(124,58,237,0.1)] backdrop-blur-md">
+            <div class="grid sm:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-[10px] font-bold uppercase tracking-[0.2em] mb-2 text-gray-500">Name</label>
+                <input type="text" name="Name" placeholder="John Doe" class="w-full bg-white/50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all" required>
+              </div>
+              <div>
+                <label class="block text-[10px] font-bold uppercase tracking-[0.2em] mb-2 text-gray-500">Email</label>
+                <input type="email" name="Email" placeholder="you@example.com" class="w-full bg-white/50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all" required>
+              </div>
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold uppercase tracking-[0.2em] mb-2 text-gray-500">Subject</label>
+              <input type="text" name="Subject" placeholder="Project inquiry" class="w-full bg-white/50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all" required>
+            </div>
+            <div>
+              <label class="block text-[10px] font-bold uppercase tracking-[0.2em] mb-2 text-gray-500">Message</label>
+              <textarea name="Message" rows="5" placeholder="Tell me about your project..." class="w-full bg-white/50 border border-gray-200 rounded-xl px-4 py-3 text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:border-indigo-500 focus:ring-1 focus:ring-indigo-500 transition-all resize-y min-h-[140px]" required></textarea>
+            </div>
+            <button type="submit" class="w-full bg-gradient-to-r from-purple-500 to-indigo-600 hover:from-purple-600 hover:to-indigo-700 text-white font-bold py-3 px-6 rounded-xl flex items-center justify-center gap-2 transition-all group shadow-lg shadow-indigo-500/30">
+              <span>Send Message</span>
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-send transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"><path d="M14.536 21.686a.5.5 0 0 0 .937-.024l6.5-19a.496.496 0 0 0-.635-.635l-19 6.5a.5.5 0 0 0-.024.937l7.93 3.18a2 2 0 0 1 1.112 1.11z"></path><path d="m21.854 2.147-10.94 10.939"></path></svg>
+            </button>
+          </form>
+        </div>
       </div>
     </div>
   </section>
 
   <!-- ⚙️ Footer -->
-  <footer class="bg-white/80 backdrop-blur-sm border-t border-gray-200 py-6">
-    <p class="text-center font-inter text-gray-600">© 2026 Rahmat Hanif Mahasetyaputra</p>
+  <footer class="bg-white/80 backdrop-blur-md border-t border-gray-200 py-6 mt-8">
+    <p class="text-center font-inter text-gray-500 text-sm">© 2026 Rahmat Hanif Mahasetyaputra</p>
   </footer>
 
   <script src="script.js"></script>
