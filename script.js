@@ -278,11 +278,13 @@ function initTypingEffect() {
   const typedTextElement = document.getElementById('typedText');
   if (typedTextElement) {
     const roles = [
-      'Business Analyst & IT Consultant',
+      'IT Consultant',
       'SAP Certified Associate',
-      'UI/UX Designer',
+      'Business Analyst',
       'Problem Solver',
-      'Innovation Driver'
+      'Strategic Thinker',
+      'Innovation Driver',
+      'Technology & Business Consultant'
     ];
     
     let roleIndex = 0;

@@ -285,7 +285,7 @@ body::before {
   height: 100%;
   border-radius: 24px;
   overflow: hidden;
-  background: transparent; /* Removed background so image background can be transparent */
+  background: #ffffff; /* Set background to white */
   box-shadow: 0 20px 48px rgba(79, 70, 229, 0.15);
 }
 
